@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Add Map</title>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="holiday planner">
+    <meta name="keywords" content="maps, map, holiday, plan, vacation, Dovolená">
+    <meta name="author" content="David Mikula">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="mapa.css" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" >
+    
+    <title>Dovolená</title>
+
+  </head>
+  <body>
+    <main>
+    <div id="map"></div>
+    <button id="LDMode"><span class="material-symbols-outlined">brightness_7</span></button>
+    <form>
+      <label for="lat">Zeměpisná šířka</label>
+      <input type="text" name="lat" id="lat" disabled>
+      <label for="lng">Zeměpisná délka</label>
+      <input type="text" name="lng" id="lng" disabled>
+      <label for="place">Místo</label>
+      <textarea name="place" id="place" disabled></textarea>
+      <label for="date">Datum</label>
+      <input type="date" name="date" id="date">
+      <label for="notes">Poznámky</label>
+      <textarea name="notes" id="notes"></textarea>
+      <input type="submit" id="submit" value="Uložit">
+    </form>
+    </main>
+
+    
+    <script type="module" src="mapa.js"></script>
+    <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+    <!-- <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC15cytSd4AwNRGvfyu9I9AgBeu2--XNjU&callback=initMap&v=weekly"
+      defer
+    ></script> -->
+
+  </body>
+</html>

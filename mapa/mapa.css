@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+main {
+    margin: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    height: calc(100% - 20px);
+    overflow: auto;
+}
+
+#LDMode {
+    position:absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    flex-basis: 80%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-basis: 20%;
+    margin-right: 5px;
+}
+
+input, textarea {
+    border-radius: 10px;
+    font-size: 18px;
+    padding-left: 3px;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px 1px black;
+    border: black solid 2px;
+}
+
+input:focus, textarea:focus {
+    box-shadow: 0px 0px 10px 1px rgb(0, 4, 255);
+} 
+
+input:disabled, textarea:disabled {
+    box-shadow: 0px 0px 10px 1px rgb(255, 0, 0);
+} 
+
+
+#place {
+    resize: vertical;
+    height: 100px;
+}
+
+#notes {
+    resize: vertical;
+    height: 200px;
+    font-weight: normal;
+}
+
+@media screen  and (max-width: 800px) {
+    main {
+        margin: 10px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        height: calc(100% - 20px);
+        overflow: auto;
+        flex-direction: column;
+    }
+
+    #map {
+        margin-top: 40px;
+        height: 100%;
+        width: 100%;
+        min-width: 100%;
+        min-height: 500px;
+    }
+    
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-right: 0px;
+    }
+}
