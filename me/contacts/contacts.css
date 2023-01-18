@@ -1,0 +1,12 @@
+#mail {
+    text-decoration: none;
+    color: #ff0000;
+}
+
+#mail:hover {
+    color: blue;
+}
+
+#mail:active {
+    color: rgb(0, 255, 0);
+}

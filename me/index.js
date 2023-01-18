@@ -3,7 +3,7 @@ const loader = document.querySelector("#loader");
 let interval = setInterval(() => {
     val = val - 0.1;
     loader.style.setProperty("--height", val + "%");
-    if (val < 30) {
+    if (val < 40) {
         clearInterval(interval);              
       };
 }, 10)
@@ -11,7 +11,7 @@ window.onload = (event) => {
     clearInterval(interval);
     loader.style.setProperty("--height", 0 + "%");
     document.querySelector("#circleLoader").style.setProperty("animation", "none");
-    loader.classList.add("fadeLoader");
+    loader.style.opacity = "0";
     loader.addEventListener("transitionend", () => {
         document.querySelector("#loader").remove();
     });
@@ -22,7 +22,7 @@ window.onresize = (e) => {
     createPixels();
 }
 
-const pixelsSection = document.querySelector("#pixels"); 
+const pixelsSection = document.querySelector("body"); 
 const pixelsColumns = 25;
 function createPixels() {
     let windowWidth = window.innerWidth;
@@ -44,6 +44,23 @@ function createPixels() {
         }
     });
 }
+
+const menu = document.querySelector("#menuBtn")
+const nav = document.querySelector("nav")
+
+menu.addEventListener("click", (e) => {
+    menu.classList.toggle("change")
+    menu.style.animation = "spin 0.5s"
+    menu.style.pointerEvents = "none"
+    nav.classList.toggle("hidden")
+    menu.addEventListener("animationend", (e) => {
+        menu.style.animation = ""
+        menu.style.pointerEvents = ""
+        // menu.style.removeProperty("animation")
+        // menu.style.removeProperty("pointer-events")
+    })
+
+})
 
 
 
