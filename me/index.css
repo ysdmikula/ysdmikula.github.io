@@ -226,11 +226,12 @@ a:active {
     }
 }
 
-nav:not(.hidden) a {
+nav:not([hide]) a {
     animation: navLinksShow 0.5s;
 }
 
-nav.hidden a {
+nav[hide] a {
     animation: navLinksHide 0.5s;
 }
+
 

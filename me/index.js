@@ -53,8 +53,8 @@ menu.addEventListener("click", (e) => {
     menu.classList.toggle("change")
     menu.style.animation = "spin 0.5s"
     menu.style.pointerEvents = "none"
-    nav.classList.toggle("hidden")
-    if (nav.classList.contains("hidden")) {
+    nav.toggleAttribute("hide")
+    if (nav.hasAttribute("hide")) {
         nav.addEventListener("animationend", (e) => {
             nav.style.display = "none"
         }, {once: true})
