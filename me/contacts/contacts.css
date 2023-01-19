@@ -29,6 +29,7 @@ body {
     position: relative;
     margin: 20px;
     box-shadow: 0 0 10px 0px black;
+    pointer-events: none;
 }
 
 #container img {

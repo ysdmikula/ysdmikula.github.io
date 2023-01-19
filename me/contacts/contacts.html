@@ -20,6 +20,7 @@
             document.querySelectorAll("#links a").forEach((el, key) => {
                 el.addEventListener("animationend", (e) => {
                     el.style.animation = ""
+                    document.querySelector("#container").style.pointerEvents = "auto"
                 })
                 if (key % 2 == 0) {
                     el.style.animation = "linkSlideLeft 1s cubic-bezier(.17,.67,.58,1.03)"
