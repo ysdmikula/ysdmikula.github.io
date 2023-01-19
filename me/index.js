@@ -47,12 +47,20 @@ function createPixels() {
 
 const menu = document.querySelector("#menuBtn")
 const nav = document.querySelector("nav")
+const a = document.querySelector("a")
 
 menu.addEventListener("click", (e) => {
     menu.classList.toggle("change")
     menu.style.animation = "spin 0.5s"
     menu.style.pointerEvents = "none"
     nav.classList.toggle("hidden")
+    if (nav.classList.contains("hidden")) {
+        nav.addEventListener("animationend", (e) => {
+            nav.style.display = "none"
+        }, {once: true})
+    } else {
+        nav.style.display = "flex"
+    }
     menu.addEventListener("animationend", (e) => {
         menu.style.animation = ""
         menu.style.pointerEvents = ""
