@@ -118,7 +118,7 @@ nav {
     position: absolute;
     bottom: 20%;
     width: 100%;
-    display: flex;
+    display: none;
     justify-content: space-around;
     pointer-events: none;
 }  
@@ -194,9 +194,6 @@ a:active {
   transform: translate(0, -6px) rotate(45deg);
 }
 
-.hidden {
-    display: none;
-}
 
 @keyframes movingBg {
     0%{
@@ -230,16 +227,10 @@ a:active {
 }
 
 nav:not(.hidden) a {
-    animation: navLinksShow 2s cubic-bezier(0,1.13,.27,.96);
+    animation: navLinksShow 0.5s;
 }
 
 nav.hidden a {
-    animation: navLinksHide 2s cubic-bezier(0,1.13,.27,.96);
+    animation: navLinksHide 0.5s;
 }
 
-/* nav a:nth-child(1){
-    position: absolute;
-    bottom: 3%;
-    color: red !important; 
-    transition: position 3s linear;
-} */
