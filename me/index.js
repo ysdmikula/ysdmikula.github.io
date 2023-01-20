@@ -56,10 +56,10 @@ menu.addEventListener("click", (e) => {
     nav.toggleAttribute("hide")
     if (nav.hasAttribute("hide")) {
         nav.addEventListener("animationend", (e) => {
-            nav.style.display = "none"
+            nav.style.visibility = "hidden"
         }, {once: true})
     } else {
-        nav.style.display = "flex"
+        nav.style.visibility = "visible"
     }
     menu.addEventListener("animationend", (e) => {
         menu.style.animation = ""
