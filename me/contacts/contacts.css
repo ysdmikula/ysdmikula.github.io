@@ -89,17 +89,17 @@ a:active {
     color: blue;
 }
 
-#container:hover {
+#container[animate] {
     animation: pfpMove 0.5s;
 }
 
-#container:hover + #links a:nth-child(1) {
+#container[animate] + #links a:nth-child(1) {
     animation: linkTouch 0.3s ease 0.25s;
 }
-#container:hover + #links a:nth-child(2) {
+#container[animate] + #links a:nth-child(2) {
     animation: linkTouch 0.3s ease 0.55s;
 }
-#container:hover + #links a:nth-child(3) {
+#container[animate] + #links a:nth-child(3) {
     animation: linkTouch 0.3s ease 0.85s;
 }
 
