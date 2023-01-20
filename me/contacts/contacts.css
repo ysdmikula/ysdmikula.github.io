@@ -50,7 +50,7 @@ body {
 
 #links > * {
     border: solid 2px rgb(0, 0, 255);
-    width: min(80vw,2000px);
+    width: min(70vw,2000px);
     text-align: center;
     padding: 10px;
     border-radius: 10px;
@@ -90,17 +90,17 @@ a:active {
 }
 
 #container:hover {
-    animation: pfpMove 1s;
+    animation: pfpMove 0.5s;
 }
 
 #container:hover + #links a:nth-child(1) {
-    animation: linkTouch 0.3s ease 0.5s;
+    animation: linkTouch 0.3s ease 0.25s;
 }
 #container:hover + #links a:nth-child(2) {
-    animation: linkTouch 0.3s ease 0.8s;
+    animation: linkTouch 0.3s ease 0.55s;
 }
 #container:hover + #links a:nth-child(3) {
-    animation: linkTouch 0.3s ease 1.1s;
+    animation: linkTouch 0.3s ease 0.85s;
 }
 
 @keyframes pfpMove {
@@ -119,19 +119,21 @@ a:active {
     0%{
         transform: translate(1000%);
     }
+
 }
 @keyframes linkSlideLeft {
     0%{
         transform: translate(-1000%);
     }
+
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
     #container {
-        --profilePic: 100vw;
+        --profilePic: 70vw;
     }
 
     #links > * {
-        width: calc(100vw - 80px);
+        width: calc(90vw - 80px);
     }
 }
