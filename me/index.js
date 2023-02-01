@@ -45,30 +45,82 @@ function createPixels() {
     });
 }
 
-const menu = document.querySelector("#menuBtn")
-const nav = document.querySelector("nav")
-const a = document.querySelector("a")
+// const menu = document.querySelector("#menuBtn")
+// const nav = document.querySelector("nav")
+// const a = document.querySelector("a")
 
-menu.addEventListener("click", (e) => {
-    menu.classList.toggle("change")
-    menu.style.animation = "spin 0.5s"
-    menu.style.pointerEvents = "none"
-    nav.toggleAttribute("hide")
-    if (nav.hasAttribute("hide")) {
-        nav.addEventListener("animationend", (e) => {
-            nav.style.visibility = "hidden"
-        }, {once: true})
-    } else {
-        nav.style.visibility = "visible"
-    }
-    menu.addEventListener("animationend", (e) => {
-        menu.style.animation = ""
-        menu.style.pointerEvents = ""
-        // menu.style.removeProperty("animation")
-        // menu.style.removeProperty("pointer-events")
+// menu.addEventListener("click", (e) => {
+//     menu.style.animation = "spin 0.5s"
+//     menu.style.pointerEvents = "none"
+//     nav.classList.toggle("js-hide")
+//     if (nav.classList.contains("js-hide")) {
+//         nav.addEventListener("animationend", (e) => {
+//             nav.style.visibility = "hidden"
+//         }, {once: true})
+//     } else {
+//         nav.style.visibility = "visible"
+//     }
+//     menu.addEventListener("animationend", (e) => {
+//         menu.style.animation = ""
+//         menu.style.pointerEvents = ""
+//         // menu.style.removeProperty("animation")
+//         // menu.style.removeProperty("pointer-events")
+//     })
+
+// })
+
+
+const motorcycle = document.querySelector("#motorcycle")
+
+motorcycle.addEventListener("click", (e) => {
+    motorcycle.classList.add("js-go")
+    motorcycle.addEventListener("animationend", (e) => {
+        window.location.href = "aboutMe/me.html"
     })
-
 })
 
 
+const texts = ["Hello", "Welcome", "Click the motorcycle to continue"]
+const typeSimulation = document.querySelector("#typeSimulation h3")
+
+let textPlace = 0 
+let char = 0
+let writing = true
+
+let typing = setInterval(type, 100)
+
+function type() {
+    let text = texts[textPlace % texts.length]
+    if (typeSimulation.textContent.length <= text.length && writing == true) {
+        if (typeSimulation.textContent.length == text.length) {
+            writing = false
+            clearInterval(typing)
+            setTimeout(rewriteInterval, 1000, 50)
+            return
+        } else {
+            char++
+            typeSimulation.textContent = text.substring(0, char)
+            return
+        }
+        
+    }
+    if (typeSimulation.textContent.length <= text.length && writing == false) {
+        if (typeSimulation.textContent == "") {
+            textPlace++
+            writing = true
+            clearInterval(typing)
+            rewriteInterval(80)
+            return
+        } else {
+            char--
+            typeSimulation.textContent = text.substring(0, char)
+            return
+        }
+
+    }
+}
+
+function rewriteInterval(speed) {
+    typing = setInterval(type, speed)
+}
 
