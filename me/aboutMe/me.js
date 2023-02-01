@@ -19,7 +19,7 @@ async function getProjects() {
        data.forEach((project) => {
        projectsSection.insertAdjacentHTML("beforeend", `<div class="project">
                                         <a href="${project.url}" class="projectURL" target="_blank">
-                                        <img src="" alt="">
+                                        <div><img src="${project.img}" alt="${project.alt}"></div>
                                         <h3 id="projectName">${project.name}</h3>
                                         <div id="projectDescription">${project.description}</div
                                     </a>

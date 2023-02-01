@@ -304,10 +304,42 @@ text {
 #projects {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
 }
 
 .project{
-    border: 1px solid white;
+    border: 1px solid white;  
+    padding: 15px;
+    border-radius: 20px;
+    height: fit-content;
+    position: relative;
+}
+
+.project:hover {
+    transition: scale 2s;
+    scale: 1.05;
+    box-shadow: 0 0 5px 2px cyan;
+}
+.project:hover::before{
+    content: "VISIT";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% -100%;
+}
+
+.project img{
+    width: 200px;
+    margin:  auto;
+}
+
+.project div:first-child{
+    display: flex;
+}
+
+.project a {
+    text-decoration: none;
+    color: white;
 }
 
 
