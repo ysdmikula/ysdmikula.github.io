@@ -199,10 +199,10 @@ nav:not(.js-hide) + #menuBtn .bar3 {
 } */
 
 #typeSimulation h3{
+    text-align: center;
     color: #fff;
     border-right: 2px solid rgb(255, 255, 255); 
     height: 25px;
-    white-space: nowrap; 
     margin: 100px auto 0 auto;
     padding-right: 5px;
     letter-spacing: .15em;
