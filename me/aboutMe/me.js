@@ -17,6 +17,7 @@ async function getProjects() {
        const data = await response.json();
 
        data.forEach((project) => {
+        //use insertAdjacentHTML - innerHTML causes problem with already declared for example ev.listeners
        projectsSection.insertAdjacentHTML("beforeend", `<div class="project">
                                         <a href="${project.url}" class="projectURL" target="_blank">
                                         <div><img src="${project.img}" alt="${project.alt}"></div>
@@ -68,9 +69,6 @@ const projectBtns = document.querySelectorAll("a[href=\"#projects\"]")
 const contactBtns = document.querySelectorAll("a[href=\"#contacts\"]")
 
 const sections = [document.querySelector("#cv"), document.querySelector("#projects"), document.querySelector("#contacts")]
-// const cvSection = document.querySelector("#cv")
-// const projectSection = document.querySelector("#projects")
-// const contactSection = document.querySelector("#contacts")
 
 clickToShowSection(cvBtns, "cv")
 clickToShowSection(projectBtns, "projects")
@@ -160,6 +158,7 @@ progressBars.forEach((progressBar) => {
     progressBar.style.setProperty("--js-progressBarFill", fillProgressBar + "%")
 })
 
+//animate in JS not using classes
 // progressBars.forEach((progressBar, index) => {
 //     let fillProgressBar = progressBar.getAttribute("fill")
 

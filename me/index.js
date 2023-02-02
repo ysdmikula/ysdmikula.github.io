@@ -45,6 +45,7 @@ function createPixels() {
     });
 }
 
+//previous style
 // const menu = document.querySelector("#menuBtn")
 // const nav = document.querySelector("nav")
 // const a = document.querySelector("a")
