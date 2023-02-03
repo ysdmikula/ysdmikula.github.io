@@ -303,8 +303,8 @@ text {
 
 #projects {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
 }
 
 .project{
@@ -329,7 +329,7 @@ text {
 }
 
 .project img{
-    width: 200px;
+    max-width: 100%;
     margin:  auto;
 }
 
