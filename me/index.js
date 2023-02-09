@@ -88,15 +88,15 @@ let textPlace = 0
 let char = 0
 let writing = true
 
-let typing = setInterval(type, 100)
+let typing = setInterval(type, 100, texts)
 
-function type() {
+function type(texts) {
     let text = texts[textPlace % texts.length]
     if (typeSimulation.textContent.length <= text.length && writing == true) {
         if (typeSimulation.textContent.length == text.length) {
             writing = false
             clearInterval(typing)
-            setTimeout(rewriteInterval, 1000, 50)
+            setTimeout(rewriteInterval, 1000, 50, texts)
             return
         } else {
             char++
@@ -110,7 +110,7 @@ function type() {
             textPlace++
             writing = true
             clearInterval(typing)
-            rewriteInterval(80)
+            rewriteInterval(80, texts)
             return
         } else {
             char--
@@ -121,7 +121,7 @@ function type() {
     }
 }
 
-function rewriteInterval(speed) {
-    typing = setInterval(type, speed)
+function rewriteInterval(speed, texts) {
+    typing = setInterval(type, speed, texts)
 }
 
