@@ -125,3 +125,7 @@ function rewriteInterval(speed, texts) {
     typing = setInterval(type, speed, texts)
 }
 
+
+
+
+
