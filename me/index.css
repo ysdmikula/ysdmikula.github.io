@@ -255,12 +255,8 @@ nav:not(.js-hide) + #menuBtn .bar3 {
     30%{
         rotate: z -30deg;
     }
-    99% {
-        visibility: visible; 
-    }
     100%{
         translate: 100vw;
-        visibility: hidden;
     }
     
 }
