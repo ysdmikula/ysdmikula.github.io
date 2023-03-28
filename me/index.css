@@ -224,7 +224,7 @@ nav:not(.js-hide) + #menuBtn .bar3 {
 }
 
 #motorcycle.js-go {
-    animation: ride 2s ease-in forwards;
+    animation: ride 2s ease-in;
 }
 
 #motorcycle:hover::before {
