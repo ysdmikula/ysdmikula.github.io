@@ -77,6 +77,7 @@ motorcycle.addEventListener("click", (e) => {
     motorcycle.classList.add("js-go")
     motorcycle.addEventListener("animationend", (e) => {
         window.location.href = "aboutMe/me.html"
+        motorcycle.classList.remove("js-go")
     })
 })
 
