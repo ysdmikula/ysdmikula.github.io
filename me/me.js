@@ -48,7 +48,7 @@ const linksContainer = document.querySelector("#links")
 
 
 document.querySelector("#links a:last-child").addEventListener("animationend", (e) => {
-    if (e.animationName == "linkSlideRight") {
+    if (e.animationName == "linkSlideLeft" || e.animationName == "linkSlideRight") {
         imgContainer.classList.remove("js-showLinks")
     } else {
         imgContainer.classList.remove("js-animateLink")
@@ -140,13 +140,10 @@ popMenuBtn.addEventListener("click", (e) => {
 
 let date = new Date();
 const birth = new Date(2002, 2, 4, 0, 0, 0)
-
 let age = date.getFullYear() - birth.getFullYear()
-
-if (date.toLocaleDateString("cs-CZ", { timeZone: "Europe/Prague"}) < birth.toLocaleDateString("cs-CZ", { timeZone: "Europe/Prague"})) {
+if (date.getTime() < birth.getTime()) {
     age--
 } 
-
 document.querySelector("#age").textContent = age
 
 
@@ -175,19 +172,19 @@ progressBars.forEach((progressBar) => {
 // })
 
 
-
-const svgs = document.querySelectorAll(".js-progressCircle")
-svgs.forEach((svg) => {
-    let children = svg.children
-    let fillCircle
-    for (const child of children) {
-        if (child.nodeName == "circle") {
-            fillCircle = child.getAttribute("data-percent")
-            child.style.setProperty("--js-fillProgressCircle", Number(fillCircle/100))
-        }
-        if (child.nodeName == "text") {
-            child.textContent = fillCircle + "%"
-        }
-    }
-})
+//circular proggress animation
+// const svgs = document.querySelectorAll(".js-progressCircle")
+// svgs.forEach((svg) => {
+//     let children = svg.children
+//     let fillCircle
+//     for (const child of children) {
+//         if (child.nodeName == "circle") {
+//             fillCircle = child.getAttribute("data-percent")
+//             child.style.setProperty("--js-fillProgressCircle", Number(fillCircle/100))
+//         }
+//         if (child.nodeName == "text") {
+//             child.textContent = fillCircle + "%"
+//         }
+//     }
+// })
 
