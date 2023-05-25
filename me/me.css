@@ -5,7 +5,6 @@
 body {
     margin: 0px;
     background-color: rgb(12, 12, 12);
-    color: rgb(240, 240, 240);
 }
 
 #back {
@@ -28,12 +27,19 @@ body {
 
 main {
     display: flex;
-    margin: 30px 50px;
+    margin: 20px 40px;
+    padding: 10px;
     gap: 20px;
+    overflow: hidden;
+}
+
+#info, #profile {
+    box-shadow: 0 0 20px 5px rgba(0, 0, 255, 0.384) ;
+    background-color: var(--bgColorComponents);
+    margin: 5px;
 }
 
 #profile {
-    background-color: var(--bgColorComponents);
     min-width: 200px;
     max-width: 300px;
     height: min-content;
@@ -41,7 +47,6 @@ main {
 
 #info {
     flex-grow: 2;
-    background-color: var(--bgColorComponents);
     padding: 20px;
     min-width: min-content;
 }
@@ -227,7 +232,7 @@ nav a.js-active div, nav a.js-active{
 
 .skill {
     text-align: center;
-    width: 100px;
+    width: 150px;
     box-shadow: 0 0 3px 0 white;
     padding: 10px 5px;
     display: inline-block;
@@ -238,8 +243,7 @@ nav a.js-active div, nav a.js-active{
     font-size: 20px;
 }
 
-.skill svg {
-    width: 100px;
+.skill img {
     height: 100px;
 }
 

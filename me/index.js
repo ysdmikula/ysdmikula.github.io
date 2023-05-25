@@ -7,6 +7,7 @@ let interval = setInterval(() => {
         clearInterval(interval);              
       };
 }, 10)
+
 window.onload = (event) => {
     clearInterval(interval);
     loader.style.setProperty("--height", 0 + "%");
@@ -14,76 +15,68 @@ window.onload = (event) => {
     loader.style.opacity = "0";
     loader.addEventListener("transitionend", () => {
         document.querySelector("#loader").remove();
+        document.querySelector("body").style.overflowY = "auto";
     });
     createPixels();
 }
 
 window.onresize = (e) => {
-    createPixels();
+    if(countNewPixels() == countOnSitePixels()) {
+        resizePixels();
+    }
+    createPixels();  
 }
 
-const pixelsSection = document.querySelector("body"); 
-const pixelsColumns = 25;
-function createPixels() {
-    let windowWidth = window.innerWidth;
-    let windowHeight = window.innerHeight;
-    
-    let pixelSideLength = (windowWidth/pixelsColumns) - 2;
-    let pixelsRows = Math.ceil(windowHeight/pixelSideLength);
-    let numberOfPixels = pixelsColumns * pixelsRows;
-    
-    for (let index = 0; index < numberOfPixels; index++) {
-        pixelsSection.appendChild(document.createElement("span"));
-    }
 
-    pixelsSection.childNodes.forEach(element => {
-        if (element.tagName === "SPAN") {
-            element.classList.add("pixel")
-            element.style.width = pixelSideLength + "px";
-            element.style.height = pixelSideLength + "px";
-        }
+const pixelsSection = document.querySelector("#animationBg"); 
+const pixelsColumns = 24;
+
+function pixelSideLength() {
+    let windowWidth = window.innerWidth;
+    return (windowWidth/pixelsColumns) - parseInt(getComputedStyle(document.querySelector("#animationBg")).gap);
+}
+
+function countOnSitePixels() {
+        let amount = 0;
+        document.querySelectorAll("#animationBg .pixel").forEach(pixel => {
+            amount++
+        });
+        return amount;
+}
+
+function countNewPixels(sideLength = pixelSideLength) {
+    let containerHeight = parseInt(getComputedStyle(pixelsSection).height);
+    
+    let pixelSideLength = sideLength();
+    let pixelsRows = Math.ceil(containerHeight/pixelSideLength);
+    return pixelsColumns * pixelsRows;
+}
+
+function createPixels(sideLength = pixelSideLength) {
+    document.querySelectorAll("#animationBg .pixel").forEach(pixel => {
+        pixel.remove()
+    });
+    let numberOfPixels = countNewPixels();
+    let pixelSideLength = sideLength();
+
+    for (let index = 0; index < numberOfPixels; index++) {
+        pixelsSection.insertAdjacentHTML("beforeend",
+        `<span class="pixel ${index}" style="width: ${pixelSideLength}px; height: ${pixelSideLength}px;"></span>`);
+    }
+}
+
+function resizePixels(sideLength = pixelSideLength) {
+    document.querySelectorAll("#animationBg .pixel").forEach(pixel => {
+        pixel.style.width = sideLength() + "px";
+        pixel.style.height = sideLength()  + "px";
     });
 }
 
-//previous style
-// const menu = document.querySelector("#menuBtn")
-// const nav = document.querySelector("nav")
-// const a = document.querySelector("a")
-
-// menu.addEventListener("click", (e) => {
-//     menu.style.animation = "spin 0.5s"
-//     menu.style.pointerEvents = "none"
-//     nav.classList.toggle("js-hide")
-//     if (nav.classList.contains("js-hide")) {
-//         nav.addEventListener("animationend", (e) => {
-//             nav.style.visibility = "hidden"
-//         }, {once: true})
-//     } else {
-//         nav.style.visibility = "visible"
-//     }
-//     menu.addEventListener("animationend", (e) => {
-//         menu.style.animation = ""
-//         menu.style.pointerEvents = ""
-//         // menu.style.removeProperty("animation")
-//         // menu.style.removeProperty("pointer-events")
-//     })
-
-// })
 
 
-const motorcycle = document.querySelector("#motorcycle")
 
-motorcycle.addEventListener("click", (e) => {
-    motorcycle.classList.add("js-go")
-    motorcycle.addEventListener("animationend", (e) => {
-        window.location.href = "aboutMe/me.html"
-        motorcycle.classList.remove("js-go")
-    })
-})
-
-
-const texts = ["Hello", "Welcome", "Click the motorcycle to continue"]
-const typeSimulation = document.querySelector("#typeSimulation h3")
+const texts = ["Hello, Welcome", "↓ Scroll down ↓"]
+const typeSimulation = document.querySelector("#text h3")
 
 let textPlace = 0 
 let char = 0
@@ -125,8 +118,3 @@ function type(texts) {
 function rewriteInterval(speed, texts) {
     typing = setInterval(type, speed, texts)
 }
-
-
-
-
-
