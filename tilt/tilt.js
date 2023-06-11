@@ -39,7 +39,6 @@ function runBtn(mouseX,mouseY) {
     let btnCenterY = btnInfo.y + btnInfo.height/2;
     let r = Math.sqrt(Math.abs(btnCenterX - mouseX)**2 + Math.abs(btnCenterY - mouseY)**2)
     let rMin = 80;
-    console.log(r);
     if (r < rMin) {
         let mainInfo = document.querySelector("main").getBoundingClientRect()
         let translateX = randomTranslate(mainInfo.width/2 - btnInfo.width/2);
