@@ -12,5 +12,12 @@
     "description": "Loader pro stránku. Logo postupně získává barvu.", 
     "img": "imgs/loader.png",
     "alt": "loader img"
+},
+{
+    "name": "3d tilt, mouse tracking",
+    "url": "https://ysdmikula.github.io/tilt/",
+    "description": "3d sklony objektu vůči pozici myši. Tlačítko, na které je těžké kliknout.", 
+    "img": "imgs/tilt.png",
+    "alt": "tilt img"
 }
 ]
