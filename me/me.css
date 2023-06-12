@@ -247,6 +247,14 @@ nav a.js-active div, nav a.js-active{
     height: 100px;
 }
 
+.skill img[alt~="sql"]{
+    mix-blend-mode: color;
+}
+
+.skill :is(img[alt~="java"], img[alt~="php" i]){
+    mix-blend-mode: plus-lighter;
+}
+
 .js-progressCircle circle {
     stroke-width: 10px;
     fill: transparent;
