@@ -2,7 +2,7 @@
 {
     "name": "Seznam Mapy API",
     "url": "https://ysdmikula.github.io/mapa/",
-    "description": "Práce s API od Seznam Map. Stránka slouží jako plánovač výletů. Vyberete si místo kliknutím na mapu, přidáte datum, kdy dovolená začíná a vlastní poznámky. Plán si poté můžete uložit do zařízení.",
+    "description": "Práce s API od Seznam Mapy. Stránka slouží jako plánovač výletů. Vyberete si místo kliknutím na mapu, přidáte datum, kdy dovolená začíná a vlastní poznámky. Plán si poté můžete uložit do zařízení.",
     "img": "imgs/mapy.png",
     "alt": "seznam mapy img"
 }, 

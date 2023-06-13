@@ -4,35 +4,26 @@
 
 const projectsSection = document.querySelector("#projects")
 
-const popMenuBtn = document.querySelector("#popMenuBtn")
-const popMenuLinks = document.querySelector("#popMenuLinks")
 
 
 async function getProjects() {
     try {
        const response = await fetch('projects.json');
        if (!response.ok) {
-           throw new Error(`HTTP error! status: ${response.status}`);
+           throw new Error(`Failed to get projects! status: ${response.status}`);
        }
        const data = await response.json();
 
        data.forEach((project) => {
-        //use insertAdjacentHTML - innerHTML causes problem with already declared for example ev.listeners
-       projectsSection.insertAdjacentHTML("beforeend", `<div class="project">
+        //use insertAdjacentHTML - innerHTML+= causes problem with already declared for example ev.listeners
+       projectsSection.insertAdjacentHTML("beforeend", `
                                         <a href="${project.url}" class="projectURL" target="_blank">
-                                        <div><img src="${project.img}" alt="${project.alt}"></div>
-                                        <h3 id="projectName">${project.name}</h3>
-                                        <div id="projectDescription">${project.description}</div
-                                    </a>
-                                 </div>`)
-        // projectsSection.innerHTML += `<div class="project">
-        //                                 <a href="${project.url}" class="projectURL" target="_blank">
-        //                                     <img src="" alt="">
-        //                                     <div id="projectName">${project.name}</div>
-        //                                     <div id="projectDescription">${project.description}</div
-        //                                 </a>
-        //                              </div>`
-        // })
+                                            <div class="project">
+                                                <div><img src="${project.img}" alt="${project.alt}"></div>
+                                                <h3 class="projectName">${project.name}</h3>
+                                                <div class="projectDescription">${project.description}</div>
+                                            </div>
+                                        </a>`)
         })
     } catch (error) {
       console.log(error);
@@ -40,7 +31,6 @@ async function getProjects() {
 }
   
 getProjects();
-
 
 
 const imgContainer = document.querySelector("#imgContainer");
@@ -68,53 +58,83 @@ const cvBtns = document.querySelectorAll("a[href=\"#cv\"]")
 const projectBtns = document.querySelectorAll("a[href=\"#projects\"]")
 const contactBtns = document.querySelectorAll("a[href=\"#contacts\"]")
 
-const sections = [document.querySelector("#cv"), document.querySelector("#projects"), document.querySelector("#contacts")]
+showSection(cvBtns, "cv")
+showSection(projectBtns, "projects")
+showSection(contactBtns, "contacts")
 
-clickToShowSection(cvBtns, "cv")
-clickToShowSection(projectBtns, "projects")
-clickToShowSection(contactBtns, "contacts")
+const popMenuBtn = document.querySelector("#popMenuBtn")
 
-function clickToShowSection(buttons, sectionName) {
+function showSection(buttons, sectionName) {
     buttons.forEach((button) => {
         button.addEventListener("click", (e) => {
             e.preventDefault()
-            popMenuBtn.classList.remove("js-active")
+            popMenuBtn.classList.remove("js-popMenuActive")
             popMenuLinks.classList.add("js-popMenuHide")
-            const allBtns = Array(cvBtns).concat(Array(projectBtns), Array(contactBtns))
-            allBtns.forEach((node) => {
-               node.forEach((button) => {
-                if (button.classList.contains("js-active")) {
-                button.classList.remove("js-active")
-                }
-               })
-            })
+            deactivateLinks()
             buttons.forEach((button) => {
                 button.classList.add("js-active")
             })
-            
-            sections.forEach((val) => {
-                if (val.id == sectionName) {
-                    if (!val.classList.contains("js-showSection")) {
-                        val.classList.remove("js-hide")
-                        val.classList.add("js-showSection")
-                        if (sectionName == "contacts") {
-                            imgContainer.classList.add("js-showLinks")
-                        } else {
-                            imgContainer.classList.remove("js-animateLink")
-                        }
-                        
-                    }
+            displaySection(sectionName)
+            if (sectionName == "projects") {
+                detailedProjectDescription();
+            }
+        })
+    })
+
+
+}
+
+function deactivateLinks() {
+    const allBtns = Array(cvBtns).concat(Array(projectBtns), Array(contactBtns))
+    allBtns.forEach((node) => {
+       node.forEach((button) => {
+        if (button.classList.contains("js-active")) {
+            button.classList.remove("js-active");
+        }
+       })
+    })
+}
+
+function displaySection(sectionName) {
+    const sections = [document.querySelector("#cv"), document.querySelector("#projects"), document.querySelector("#contacts")]
+
+    sections.forEach((section) => {
+        if (section.id == sectionName) {
+            if (!section.classList.contains("js-showSection")) {
+                section.classList.remove("js-hide")
+                section.classList.add("js-showSection")
+                if (sectionName == "contacts") {
+                    imgContainer.classList.add("js-showLinks")
                 } else {
-                    if (val.classList.contains("js-showSection")) {
-                        val.classList.remove("js-showSection")
-                    }
-                    val.classList.add("js-hide")
+                    imgContainer.classList.remove("js-animateLink")
                 }
-            })
+                
+            }
+        } else {
+            if (section.classList.contains("js-showSection")) {
+                section.classList.remove("js-showSection")
+            }
+            section.classList.add("js-hide")
+        }
+    })
+}
+
+function detailedProjectDescription() {
+    document.querySelectorAll(".projectDescription").forEach(projectDescription => {
+        projectDescription.addEventListener("mouseover", e => {
+            let target = e.target;
+            console.log(target);
+            let descriptionText =  target.textContent;
+            document.querySelector("body").insertAdjacentHTML("beforeend", `<div id="fullProjectDescription" style="top: ${e.pageY + 20}px; left: ${e.pageX}px"></div>`);
+            document.querySelector("#fullProjectDescription").textContent = descriptionText;
+        })
+        projectDescription.addEventListener("mouseleave", e => {
+            document.querySelector("#fullProjectDescription").remove()
         })
     })
 }
 
+const popMenuLinks = document.querySelector("#popMenuLinks")
 
 popMenuLinks.style.setProperty("--js-popMenuLinksHeight", getComputedStyle(popMenuLinks).height)
 popMenuLinks.addEventListener("animationend", (e) => {
@@ -123,20 +143,18 @@ popMenuLinks.addEventListener("animationend", (e) => {
     }
 })
 
-
 popMenuBtn.addEventListener("click", (e) => {
-    popMenuBtn.classList.toggle("js-active")
-    if (popMenuBtn.classList.contains("js-active")) {
+    popMenuBtn.classList.toggle("js-popMenuActive")
+    if (popMenuBtn.classList.contains("js-popMenuActive")) {
         popMenuLinks.classList.remove("js-popMenuHide")
         popMenuLinks.style.visibility = "visible"
         popMenuLinks.classList.add("js-popMenuShow")
     }
-    if (!popMenuBtn.classList.contains("js-active")) {
+    if (!popMenuBtn.classList.contains("js-popMenuActive")) {
         popMenuLinks.classList.remove("js-popMenuShow")
         popMenuLinks.classList.add("js-popMenuHide")
     }
 })
-
 
 let date = new Date();
 const birth = new Date(2002, 2, 4, 0, 0, 0)
@@ -146,10 +164,7 @@ if (date.getTime() < birth.getTime()) {
 } 
 document.querySelector("#age").textContent = age
 
-
-
 const progressBars = document.querySelectorAll(".js-progressBar")
-
 progressBars.forEach((progressBar) => {
     let fillProgressBar = progressBar.getAttribute("data-percent")
     progressBar.style.setProperty("--js-progressBarFill", fillProgressBar + "%")
