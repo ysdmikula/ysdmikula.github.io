@@ -6,6 +6,9 @@ document.querySelectorAll("a").forEach(link => {
         link.classList.add("active");
         let activeContent = link.getAttribute("data-js-activeContent");
         deactivateContents();
+        if (activeContent == "btnRun") {
+            document.querySelector("#btnRun").addEventListener("click", changeText)  
+        }
         document.querySelector("#"+activeContent).classList.add("active");
     })
 })
@@ -21,36 +24,9 @@ function deactivateContents() {
     })
 }
 
-document.querySelector("#btnRun").addEventListener("click", e => {
-
-})
-
 document.addEventListener("mousemove", (mouse) => {
     tracking(mouse);
 });
-
-function runBtn(mouseX,mouseY) {
-    let btn = document.querySelector("#btnRun");
-    btn.addEventListener("click", e => {
-        btn.innerText = "You clicked me"
-    })
-    let btnInfo = btn.getBoundingClientRect();
-    let btnCenterX = btnInfo.x + btnInfo.width/2;
-    let btnCenterY = btnInfo.y + btnInfo.height/2;
-    let r = Math.sqrt(Math.abs(btnCenterX - mouseX)**2 + Math.abs(btnCenterY - mouseY)**2)
-    let rMin = 80;
-    if (r < rMin) {
-        let mainInfo = document.querySelector("main").getBoundingClientRect()
-        let translateX = randomTranslate(mainInfo.width/2 - btnInfo.width/2);
-        let translateY = randomTranslate(mainInfo.height/2 - btnInfo.height/2);
-        btn.style.translate = `${translateX}px ${translateY}px`;
-    }
-}
-
-function randomTranslate(range) {
-    let negative = Math.round(Math.random());
-    return Math.random() * range * (negative ? -1:1)
-}
 
 function tracking(mouse) {
     let mouseX = mouse.pageX;
@@ -68,6 +44,34 @@ function tracking(mouse) {
         eyesMovement(mouseX, mouseY, screenCenterX, screenCenterY);
     } 
 }
+
+function runBtn(mouseX,mouseY) {
+    let btn = document.querySelector("#btnRun");
+    let btnInfo = btn.getBoundingClientRect();
+    let btnCenterX = btnInfo.x + btnInfo.width/2;
+    let btnCenterY = btnInfo.y + btnInfo.height/2;
+    let r = Math.sqrt(Math.abs(btnCenterX - mouseX)**2 + Math.abs(btnCenterY - mouseY)**2)
+    let rMin = 80;
+    if (r < rMin) {
+        let mainInfo = document.querySelector("main").getBoundingClientRect()
+        let translateX = randomTranslate(mainInfo.width/2 - btnInfo.width/2);
+        let translateY = randomTranslate(mainInfo.height/2 - btnInfo.height/2);
+        btn.style.translate = `${translateX}px ${translateY}px`;
+    }
+}
+
+function changeText(e) {
+    let defaultText = e.target.textContent
+    e.target.innerText = "You clicked me"
+    setTimeout(() => {e.target.innerText = defaultText}, 3000)
+}
+
+function randomTranslate(range) {
+    let negative = Math.round(Math.random());
+    return Math.random() * range * (negative ? -1:1)
+}
+
+
 
 function tiltRotation(mouseX, mouseY, screenCenterX, screenCenterY) {
     let div = document.querySelector("div.active");
