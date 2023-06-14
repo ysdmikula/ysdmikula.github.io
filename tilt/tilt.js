@@ -7,7 +7,9 @@ document.querySelectorAll("a").forEach(link => {
         let activeContent = link.getAttribute("data-js-activeContent");
         deactivateContents();
         if (activeContent == "btnRun") {
-            document.querySelector("#btnRun").addEventListener("click", changeText)  
+            let btn = document.querySelector("#btnRun")
+            btn.addEventListener("click", changeText)  
+            btn.addEventListener("keydown", denyEnter)  
         }
         document.querySelector("#"+activeContent).classList.add("active");
     })
@@ -60,10 +62,18 @@ function runBtn(mouseX,mouseY) {
     }
 }
 
-function changeText(e) {
+function changeText(e, text) {
+    console.log(e);
     let defaultText = e.target.textContent
-    e.target.innerText = "You clicked me"
+    e.target.innerText = text ?? "You clicked me"
     setTimeout(() => {e.target.innerText = defaultText}, 3000)
+}
+
+function denyEnter(e) {
+    e.preventDefault()
+    if (e.key === "Enter") {
+        changeText(e, "Nice try but nope :)")
+    }
 }
 
 function randomTranslate(range) {
