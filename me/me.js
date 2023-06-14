@@ -125,7 +125,7 @@ function detailedProjectDescription() {
             let target = e.target;
             console.log(target);
             let descriptionText =  target.textContent;
-            document.querySelector("body").insertAdjacentHTML("beforeend", `<div id="fullProjectDescription" style="top: ${e.pageY + 20}px; left: ${e.pageX}px"></div>`);
+            document.querySelector("body").insertAdjacentHTML("beforeend", `<div id="fullProjectDescription" style="top: ${e.pageY}px; left: ${e.pageX}px"></div>`);
             document.querySelector("#fullProjectDescription").textContent = descriptionText;
         })
         projectDescription.addEventListener("mouseleave", e => {
