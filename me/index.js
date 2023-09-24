@@ -3,9 +3,9 @@ const loader = document.querySelector("#loader");
 let interval = setInterval(() => {
     val = val - 0.1;
     loader.style.setProperty("--height", val + "%");
-    if (val < 40) {
-        clearInterval(interval);              
-      };
+    // if (val < 40) {
+    //     clearInterval(interval);              
+    //   };
 }, 10)
 
 window.onload = (event) => {
