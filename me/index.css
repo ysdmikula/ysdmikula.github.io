@@ -55,7 +55,7 @@ html, body {
     color: rgb(255, 255, 255);
 }
 
-*:not(a *, a, h1,h2,h3) {
+*:not(a *, a, h1,h2,h3, .select-selected) {
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.03em;
 }
@@ -109,6 +109,10 @@ html, body {
     translate: -50% -50% 0 ;
     pointer-events: none;
     text-align: center;
+
+    & h4 {
+        animation: scrollDown 1s infinite;
+    }
 }
 
 #text h1{
@@ -120,6 +124,12 @@ html, body {
 
 #text h2{
     font-size: 3vw;
+    pointer-events: all;
+    opacity: 0;
+    
+    &:hover{
+        opacity: 1;
+    }
 }
 
 #text h3{
@@ -134,6 +144,7 @@ html, body {
     width: min-content;
     white-space: nowrap;
 }
+
 
 @keyframes blink-caret {
     from, to { border-color: transparent }
@@ -152,6 +163,10 @@ html, body {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+@keyframes scrollDown {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(20px); }
 }
 
 /* nav {

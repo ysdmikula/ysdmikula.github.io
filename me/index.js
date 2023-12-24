@@ -75,7 +75,7 @@ function resizePixels(sideLength = pixelSideLength) {
 
 
 
-const texts = ["Hello, Welcome", "↓ Scroll down ↓"]
+const texts = ["Welcome", "Willkommen", "Vítejte"]
 const typeSimulation = document.querySelector("#text h3")
 
 let textPlace = 0 
@@ -90,7 +90,7 @@ function type(texts) {
         if (typeSimulation.textContent.length == text.length) {
             writing = false
             clearInterval(typing)
-            setTimeout(rewriteInterval, 1000, 50, texts)
+            setTimeout(setTypingSpeed, 1000, 50)
             return
         } else {
             char++
@@ -104,7 +104,7 @@ function type(texts) {
             textPlace++
             writing = true
             clearInterval(typing)
-            rewriteInterval(80, texts)
+            setTypingSpeed(100)
             return
         } else {
             char--
@@ -115,6 +115,6 @@ function type(texts) {
     }
 }
 
-function rewriteInterval(speed, texts) {
+function setTypingSpeed(speed) {
     typing = setInterval(type, speed, texts)
 }

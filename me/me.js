@@ -1,6 +1,62 @@
 // var userLang = navigator.language || navigator.userLanguage;
 // alert ("The language is: " + userLang);
 
+/*look for any elements with the class "custom-select":*/
+let nav = document.querySelector(".custom-select");
+let selElmnt = document.querySelector("select");
+let numberOfOptions = selElmnt.length;
+/*for each element, create a new DIV that will act as the selected item:*/
+let selectedOption = document.createElement("div");
+let selectedLanguage = selElmnt.options[0].value;
+selectedOption.setAttribute("class", "select-selected");
+selectedOption.innerHTML = selElmnt.options[0].innerHTML;
+nav.appendChild(selectedOption);
+/*for each element, create a new DIV that will contain the option list:*/
+let optionList = document.createElement("div");
+optionList.setAttribute("class", "select-items select-hide");
+for (let j = 1; j < numberOfOptions; j++) {
+   /*for each option in the original select element,
+   create a new DIV that will act as an option item:*/
+   let option = document.createElement("div");
+   let link = document.createElement("a");
+   link.textContent = selElmnt.options[j].textContent;
+   link.href = selElmnt.options[j].value + ".html"
+   option.appendChild(link);
+ 
+   optionList.appendChild(option);
+}
+nav.appendChild(optionList);
+
+selectedOption.addEventListener("click", function(e) {
+   /*when the select box is clicked, close any other select boxes,
+   and open/close the current select box:*/
+   e.stopPropagation();
+   closeAllSelect(this);
+   this.nextSibling.classList.toggle("select-hide");
+   this.classList.toggle("select-arrow-active");
+   });
+
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+
+  let x = document.getElementsByClassName("select-items");
+  let y = document.getElementsByClassName("select-selected");
+  let yl = y.length;
+  for (let i = 0; i < yl; i++) {
+    if (elmnt = y[i]) {
+      y[i].classList.remove("select-arrow-active");
+      x[i].classList.add("select-hide");
+    } else {
+      x[i].classList.add("select-hide");
+    }
+  }
+
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+
 const projectsSection = document.querySelector("#projects");
 
 async function getProjects() {
@@ -11,7 +67,8 @@ async function getProjects() {
       }
       const data = await response.json();
 
-      data.forEach((project) => {
+      let obj = data.find(obj => obj.hasOwnProperty(selectedLanguage))
+      obj[selectedLanguage].forEach((project) => {
          //use insertAdjacentHTML - innerHTML+= causes problem with already declared for example ev.listeners
          projectsSection.insertAdjacentHTML(
             "beforeend",
@@ -26,7 +83,12 @@ async function getProjects() {
          );
       });
    } catch (error) {
-      console.log(error);
+      projectsSection.insertAdjacentHTML(
+         "beforeend",
+         `
+         <p style="color: red;">${error}</p>
+         `
+      );
    }
 }
 
@@ -198,3 +260,4 @@ progressBars.forEach((progressBar) => {
 //         }
 //     }
 // })
+

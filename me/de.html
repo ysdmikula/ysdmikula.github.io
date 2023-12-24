@@ -10,7 +10,8 @@
 
     <link rel="icon" type="image/x-icon" href="imgs/logo.jpg">
     <title>YSDM</title>
-    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" >
     <link rel="stylesheet" href="index.css">
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="me.css">
     <link rel="stylesheet" href="contacts.css">
     <link rel="stylesheet" href="scrollbar.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
     <script src="index.js" defer></script>
     <script src="me.js" defer></script>
 </head>
@@ -34,32 +35,32 @@
             <h1>DAVID MIKULA</h1>
             <h2>YoloSuicider</h2>
             <h3></h3>
-            <h4>↓ Posuňte se dolu ↓</h4>
+            <h4>↓ Nach unten scrollen ↓</h4>
         </div>
     </div>
     <main>
         <nav class="custom-select">
             <select id="lng">
-                <option value="index">Čeština</option>
-                <option value="de">Němčina</option>
-                <option value="eng">Angličtina</option>
+                <option value="de">Deutsch</option>
+                <option value="index">Tschechisch</option>
+                <option value="eng">English</option>
             </select>
         </nav>
         <section id="profile">
             <div id="overlay"></div>
             <div id="profilePic"><img src="imgs/logo.jpg" alt="ysdm logo"></div>
-            <div class="personalDetails" data-content="Jméno">David Mikula</div>
-            <div class="personalDetails" data-content="Státní příslušnost">Česká Republika</div>
-            <div id="age" class="personalDetails" data-content="Věk"></div>
-            <div id="driversLicence" class="personalDetails" data-content="Řidičský průkaz">B</div>
-            <div class="personalDetails" data-content="Jazyky">
-                <div>Čeština</div>
+            <div class="personalDetails" data-content="Name">David Mikula</div>
+            <div class="personalDetails" data-content="Staatsangehörigkeit">Tschechische Republik</div>
+            <div id="age" class="personalDetails" data-content="Alter"></div>
+            <div id="driversLicence" class="personalDetails" data-content="Führerschein">B</div>
+            <div class="personalDetails" data-content="Sprachen">
+                <div>Tschechisch</div>
                 <div id="cz" class="js-progressBar" data-percent="100"></div>
-                <div>Němčina</div>
+                <div>Deutsch</div>
                 <div id="de" class="js-progressBar" data-percent="95"></div>
-                <div>Angličtina</div>
+                <div>English</div>
                 <div id="en" class="js-progressBar" data-percent="95"></div>
-                <div>Vietnamština</div>
+                <div>Vietnamesisch</div>
                 <div id="vn" class="js-progressBar" data-percent="65"></div>
             </div>
         </section>
@@ -67,8 +68,8 @@
             <nav>
                 <div id="menu">
                     <a href="#cv" class="js-active"><div>CV</div></a>
-                    <a href="#projects"><div>Projekty</div></a>
-                    <a href="#contacts"><div>Kontakty</div></a>
+                    <a href="#projects"><div>Projekten</div></a>
+                    <a href="#contacts"><div>Kontakten</div></a>
                 </div>
                 <div id="popMenu">
                     <button id="popMenuBtn">
@@ -78,20 +79,20 @@
                     </button>  
                     <div id="popMenuLinks">
                         <a href="#cv" class="js-active">CV</a>
-                        <a href="#projects">Projekty</a>
-                        <a href="#contacts">Kontakty</a>
+                        <a href="#projects">Projekten</a>
+                        <a href="#contacts">Kontakten</a>
                     </div>
                 </div>
 
             </nav>
             <div id="cv" class="js-showSection">
                 <div id="education">
-                    <h1>Vzdělání</h1>
+                    <h1>Ausbildung</h1>
                     <div>
                         <div class="school">
                             <h3>Vysoká škola ekonomická v Praze</h3>
                             <div class="schoolYear">2021-...</div>
-                            <div class="schoolInfo">Program Aplikovaná informatika na Fakultě informatiky a statistiky.</div>
+                            <div class="schoolInfo">Zurzeit studiere ich ein Programm namens Aplikovaná informatika an der Fakultät für Informatik und Statistik.</div>
                         </div>
                         <div class="school">
                             <h3>Gymnázium Cheb, příspěvková organizace</h3>
@@ -100,19 +101,19 @@
                     </div>
                 </div>
                 <div id="work">
-                    <h1>Zaměstnání</h1>
+                    <h1>Berufserfahrung</h1>
                     <div>
-                        Hledám 
+                        Auf der Suche
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" fill="white" viewBox="0 0 50 50">
-                        <path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z"></path>
+                            <path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z"></path>
                         </svg>
                     </div>
                 </div>
                 <div id="skills">
-                    <h1>Dovednosti</h1>
+                    <h1>Fähigkeiten</h1>
                     <div id="PCskills" class="skillsContainer" data-content="Coding/PC">
                         <div>
-                            <div class="skillType" data-skillType = "Programování">
+                            <div class="skillType" data-skillType = "Programmieren">
                                 <div class="skill">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/2048px-HTML5_logo_and_wordmark.svg.png" alt="html logo">
                                     <h3>HTML</h3>
@@ -142,7 +143,7 @@
                                     <h3>Linux</h3>
                                 </div>
                             </div>
-                            <div class="skillType" data-skillType = "Databáze">
+                            <div class="skillType" data-skillType = "Datenbank">
                                 <div class="skill">
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBQx-qbQBE3QYjsDgY970On-J8yBKQOQXpVQ&usqp=CAU" alt="sql logo">
                                     <h3>SQL</h3>
@@ -162,7 +163,7 @@
                                     <h3>GitLab</h3>
                                 </div>
                             </div>
-                            <div class="skillType" data-skillType = "Editování">
+                            <div class="skillType" data-skillType = "Editing">
                                 <div class="skill">
                                     <img src="data:image/png;base64,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" alt="adobe photoshop logo">
                                     <h3>Adobe Ps</h3>
@@ -192,18 +193,18 @@
                             <ul>
                                 <li>UML</li>
                                 <li>BPMN</li>
-                                <li>regulární výrazy</li>
-                                <li>psaní všemi deseti</li>
+                                <li>regulärer Ausdruck</li>
+                                <li>blindschreiben </li>
                             </ul>
                         </div>
                     </div>
                     <div id="softSkills" class="skillsContainer" data-content="Soft skills">
                         <ul>
-                            <li>adaptace k novým věcem, okolí</li>
-                            <li>time management</li>
-                            <li>komunikace</li>
-                            <li>kooperativní</li>
-                            <li>rád se učím nové věci</li>
+                            <li>Adaptation an neue Dinge und Umgebungen</li>
+                            <li>Zeitmanagement</li>
+                            <li>Kommunikation</li>
+                            <li>Kooperativ</li>
+                            <li>lerne gerne neue Sachen</li>
                         </ul>
                     </div>    
                 </div>

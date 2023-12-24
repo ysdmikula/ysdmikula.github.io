@@ -1,23 +1,74 @@
 [
-{
-    "name": "Seznam Mapy API",
-    "url": "https://ysdmikula.github.io/mapa/",
-    "description": "Práce s API od Seznam Mapy. Stránka slouží jako plánovač výletů. Vyberete si místo kliknutím na mapu, přidáte datum, kdy dovolená začíná a vlastní poznámky. Plán si poté můžete uložit do zařízení.",
-    "img": "imgs/mapy.png",
-    "alt": "seznam mapy img"
-}, 
-{
-    "name": "Custom loader s logem",
-    "url": "https://ysdmikula.github.io/loader/",
-    "description": "Loader pro stránku. Logo postupně získává barvu.", 
-    "img": "imgs/loader.png",
-    "alt": "loader img"
+{"index": [
+    {
+        "name": "Seznam Mapy API",
+        "url": "https://ysdmikula.github.io/mapa/",
+        "description": "Práce s API od Seznam Mapy. Stránka slouží jako plánovač výletů. Vyberete si místo kliknutím na mapu, přidáte datum, kdy dovolená začíná a vlastní poznámky. Plán si poté můžete uložit do zařízení.",
+        "img": "imgs/mapy.png",
+        "alt": "seznam mapy img"
+    }, 
+    {
+        "name": "Loader s logem",
+        "url": "https://ysdmikula.github.io/loader/",
+        "description": "Loader pro stránku. Logo postupně získává barvu.", 
+        "img": "imgs/loader.png",
+        "alt": "loader img"
+    },
+    {
+        "name": "3d tilt, mouse tracking",
+        "url": "https://ysdmikula.github.io/tilt/",
+        "description": "3d sklony objektu vůči pozici myši. Tlačítko, na které je těžké kliknout.", 
+        "img": "imgs/tilt.png",
+        "alt": "tilt img"
+    }
+ ]
 },
-{
-    "name": "3d tilt, mouse tracking",
-    "url": "https://ysdmikula.github.io/tilt/",
-    "description": "3d sklony objektu vůči pozici myši. Tlačítko, na které je těžké kliknout.", 
-    "img": "imgs/tilt.png",
-    "alt": "tilt img"
+{"eng": [
+    {
+        "name": "Seznam Mapy API",
+        "url": "https://ysdmikula.github.io/mapa/",
+        "description": "Working with the Seznam Mapy API. The page serves as a trip planner. You can choose a location by clicking on the map, add the date when the vacation begins and personal notes. You can then save the plan to your device.",
+        "img": "imgs/mapy.png",
+        "alt": "seznam mapy img"
+    }, 
+    {
+        "name": "Loader with a logo",
+        "url": "https://ysdmikula.github.io/loader/",
+        "description": "Page loader. The logo gradually gains color.", 
+        "img": "imgs/loader.png",
+        "alt": "loader img"
+    },
+    {
+        "name": "3d tilt, mouse tracking",
+        "url": "https://ysdmikula.github.io/tilt/",
+        "description": "3D tilts of the object towards the mouse position. A button that is hard to click.", 
+        "img": "imgs/tilt.png",
+        "alt": "tilt img"
+    }
+ ]
+},
+{"de": [
+    {
+        "name": "Seznam Mapy API",
+        "url": "https://ysdmikula.github.io/mapa/",
+        "description": "Übung mit der API \"Seznam Mapy API\". Die Seite dient als ein Reiseplaner. Sie wählen sich einen Ort aus, indem Sie auf die Karte klicken, dann fügen Sie den Datum, wann der Urlaub beginnen soll hin, und persönliche Notizen machen. Sie können den Plan dann auf Ihrem Gerät speichern.",
+        "img": "imgs/mapy.png",
+        "alt": "seznam mapy img"
+    }, 
+    {
+        "name": "Ladevorgang mit einem Logo",
+        "url": "https://ysdmikula.github.io/loader/",
+        "description": "Ladevorgang. Das Logo gewinnt allmählich Farben", 
+        "img": "imgs/loader.png",
+        "alt": "loader img"
+    },
+    {
+        "name": "3d tilt, mouse tracking",
+        "url": "https://ysdmikula.github.io/tilt/",
+        "description": "3D-Neigung eines Objekts zur Mausposition. Eine schwer zu klickende Taste.", 
+        "img": "imgs/tilt.png",
+        "alt": "tilt img"
+    }
+ ]
 }
 ]
