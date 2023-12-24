@@ -46,8 +46,9 @@
     animation: spin 2s linear infinite;
 }
   
-html, body {
+body {
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 * {
