@@ -216,7 +216,7 @@ popMenuBtn.addEventListener("click", (e) => {
 });
 
 const date = new Date();
-const currentYearFirstDay = new Date(date.getFullYear,0,1) 
+const currentYearFirstDay = new Date(date.getFullYear(),0,1) 
 const birth = new Date(2002, 2, 4, 0, 0, 0);
 const birthYearFirstDay = new Date(2002,0,1)
 const age = date.getFullYear() - birth.getFullYear();
