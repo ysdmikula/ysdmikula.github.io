@@ -215,10 +215,14 @@ popMenuBtn.addEventListener("click", (e) => {
    }
 });
 
-let date = new Date();
+const date = new Date();
+const currentYearFirstDay = new Date(date.getFullYear,0,1) 
 const birth = new Date(2002, 2, 4, 0, 0, 0);
-let age = date.getFullYear() - birth.getFullYear();
-if (date.getTime() < birth.getTime()) {
+const birthYearFirstDay = new Date(2002,0,1)
+const age = date.getFullYear() - birth.getFullYear();
+const currentYearDifference = date.getTime() - currentYearFirstDay.getTime()
+const birthYearDifference = birth.getTime() - birthYearFirstDay.getTime()
+if (currentYearDifference < birthYearDifference) {
    age--;
 }
 document.querySelector("#age").textContent = age;
