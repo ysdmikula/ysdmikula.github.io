@@ -219,7 +219,7 @@ const date = new Date();
 const currentYearFirstDay = new Date(date.getFullYear(),0,1) 
 const birth = new Date(2002, 2, 4, 0, 0, 0);
 const birthYearFirstDay = new Date(2002,0,1)
-const age = date.getFullYear() - birth.getFullYear();
+let age = date.getFullYear() - birth.getFullYear();
 const currentYearDifference = date.getTime() - currentYearFirstDay.getTime()
 const birthYearDifference = birth.getTime() - birthYearFirstDay.getTime()
 if (currentYearDifference < birthYearDifference) {
