@@ -223,6 +223,7 @@ function cleanString(string) {
 
 function WinLoss(isCorrect) {
     if (isCorrect) {
+        champList.classList.remove("show")
         showFullImg()
         userInput.value = "";
         changeBoxShadow("green")
