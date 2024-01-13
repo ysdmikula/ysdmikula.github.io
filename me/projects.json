@@ -25,7 +25,7 @@
         "name": "LoLguesser",
         "url": "https://ysdmikula.github.io/lolguesser/",
         "description": "LoLguesser je hra, kde hráč musím podle obrázků (Splash art) uhodnout o jakou postavu ze hry League of Legends se jedná. Odpoví-li hráč špatně oddálí se mu postupně obrázek.", 
-        "img": "imgs/tilt.png",
+        "img": "imgs/lolguesser.png",
         "alt": "tilt img"
     }
  ]
@@ -56,7 +56,7 @@
         "name": "LoLguesser",
         "url": "https://ysdmikula.github.io/lolguesser/",
         "description": "LoLguesser is a game where the player has to guess a League of Legends champion based of the Splash art that is depicted in the pictures. If the player answers incorrectly, the image gradually zooms out", 
-        "img": "imgs/tilt.png",
+        "img": "imgs/lolguesser.png",
         "alt": "tilt img"
     }
  ]
@@ -87,7 +87,7 @@
         "name": "LoLguesser",
         "url": "https://ysdmikula.github.io/lolguesser/",
         "description": "LoLguesser ist ein Spiel, bei dem der Spieler anhand von Bildern erraten muss, um welche Spielfigur aus League of Legends es sich handelt. Antwortet der Spieler falsch, wird ihm das Bild nach und nach herausgezoomt", 
-        "img": "imgs/tilt.png",
+        "img": "imgs/lolguesser.png",
         "alt": "tilt img"
     }
  ]
