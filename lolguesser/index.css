@@ -70,7 +70,7 @@ div *:first-child {
   from {
     opacity: 0;
   }
-  50% {
+  20% {
     opacity: 1;
   }
   to {
