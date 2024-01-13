@@ -11,33 +11,13 @@ body {
     display: grid;
     align-items: center;
     justify-content: center;
-
-
-    &::after, &::before {
-        content: "";
-        background-size: contain;
-        background-repeat: no-repeat;
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        left: 50%;
-        translate: -50%;
-        display: none;
-        animation: fadeInOut ease-in-out 1s;
-    }
-
-    &::before {
-        background-image: url(https://i.pinimg.com/736x/b7/7f/f2/b77ff2a3364b677ddce39c7f1ffaf944.jpg);
-    }
-
-    &::after {
-        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYVP7g9-GPZ9EpaCJ1tKcCPj0M8wFMMd_gmPXv1uuId0RjyGE0Onog2vShvnA1xe4I9RA&usqp=CAU);
-    }
+    background-color: #3a3a3a;
 }
 
 body.victory::before {
     display: block;
     opacity: 1;
+    z-index: 100000;
 }
 
 body.defeat::after {
@@ -75,6 +55,27 @@ div *:first-child {
 
 #splashArt {
     display: none;
+    animation: imgGone 2s ease-in-out;
+    &.show {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: 1000000;
+    }
+}
+
+@keyframes imgGone{
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 p {
@@ -171,13 +172,4 @@ button {
 
 #random, canvas {
     justify-self: center;
-}
-
-@keyframes fadeInOut{
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }

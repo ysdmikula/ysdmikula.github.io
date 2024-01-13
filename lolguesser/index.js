@@ -8,18 +8,18 @@ const requestHeader = {
 
 const champs = [];
 const img = document.querySelector('#splashArt');
-const boxSideLength = canvasSideLength = 300;
+const boxSideLength = canvasSideLength = 150;
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const body = document.querySelector("body");
-const defeat = window.getComputedStyle(body, "::after");
-const victory = window.getComputedStyle(body, "::before");
 const canvasImg = new Image();
 const userInput = document.querySelector("#guess");
 const guessBtn = document.querySelector("#guessBtn");
 const error = document.querySelector("#error");
 const errorMsg = "Enter a guess";
-
+const alias = {
+    wukong : "monkey king"
+}
 let champsAmount = 0;
 
 let champToGuess = "";
@@ -33,16 +33,15 @@ init()
 async function init() {
     await getChamps();
     champsAmount = champs.length;
-    body.addEventListener("animationend", e => {
-        setTimeout(() =>{
-            body.classList.toggle(body.classList[0])
-        }, 500);
-    })
     body.addEventListener("keyup", e => {
         if (e.key == "Enter") {
             guessBtn.click()
         }
     });
+    img.addEventListener("animationend", e => {
+        img.classList.toggle(img.classList[0])
+        random()
+    })
     
     //no fking clue why I have to call it twice the first time
     setTimeout(() => {
@@ -139,10 +138,12 @@ async function random() {
 
 function checkAnswer() {
     let champToGuessLowerCase = champToGuess.toLowerCase();
-    let answerLowerCase = userInput.value.toLowerCase().replace(/\s/i, "");
+    let answerLowerCase = userInput.value.toLowerCase().replace(/[\.\'\s]]/i, "");
     
     let isCorrect = (answerLowerCase == champToGuessLowerCase);
-
+    if (alias.hasOwnProperty(userInput.value)) {
+        answerLowerCase = alias[userInput.value]
+    }
     if (answerLowerCase != "" && champToGuess != "") {
         WinLoss(isCorrect);
         errorMsg.textContent = "";
@@ -156,12 +157,16 @@ function checkAnswer() {
 
 function WinLoss(isCorrect) {
     if (isCorrect) {
-        body.classList.toggle("victory")
-        random()
+        showFullImg()
         userInput.value = "";
     } else {
-        body.classList.toggle("defeat")
         rescaleImg()
     }
 
+}
+
+function showFullImg() {
+    if (!img.classList.contains("show")) {
+        img.classList.toggle("show")
+    }
 }
