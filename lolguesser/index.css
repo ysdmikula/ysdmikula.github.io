@@ -1,0 +1,92 @@
+body {
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+
+    &::after, &::before {
+        content: "";
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        left: 50%;
+        translate: -50%;
+        display: none;
+        animation: fadeInOut ease-in-out 1s;
+    }
+
+    &::before {
+        background-image: url(https://i.pinimg.com/736x/b7/7f/f2/b77ff2a3364b677ddce39c7f1ffaf944.jpg);
+    }
+
+    &::after {
+        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYVP7g9-GPZ9EpaCJ1tKcCPj0M8wFMMd_gmPXv1uuId0RjyGE0Onog2vShvnA1xe4I9RA&usqp=CAU);
+    }
+}
+
+body.victory::before {
+    display: block;
+    opacity: 1;
+}
+
+body.defeat::after {
+    display: block;
+    opacity: 1;
+}
+
+
+#imgContainer {
+    text-align: center;
+    width: var(--size);
+    height: var(--size);
+}
+
+#guess {
+    font-size: 1.5em;
+}
+
+canvas {
+    --size: 300px;
+    width: var(--size);
+    height: var(--size);
+    overflow: hidden;
+    box-shadow: 0 0 100px 10px black;
+}
+
+div:has(> input) {
+    display: flex;
+    gap: 10px;
+}
+
+div *:first-child {
+    flex-grow: 1;
+}
+
+img {
+    display: none;
+}
+
+p {
+    color: red;
+}
+
+button {
+    width: fit-content;
+    padding: 10px;
+}
+
+#random, canvas {
+    justify-self: center;
+}
+
+@keyframes fadeInOut{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
