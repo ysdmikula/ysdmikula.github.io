@@ -3,11 +3,12 @@ const requestHeader = {
     "Accept-Language": "cs-CZ,cs;q=0.9",
     "Accept-Charset": "application/x-www-form-urlencoded; charset=UTF-8",
     "Origin": "https://developer.riotgames.com",
-    "X-Riot-Token": "RGAPI-ab597443-94c7-446a-a797-f473df3016d9"
+    "X-Riot-Token": "RGAPI-94f1441d-5aa9-4178-b4c4-22d14bf39ad9"
 };
 
 const champs = [];
 const img = document.querySelector('#splashArt');
+const champList = document.querySelector('#champList');
 const boxSideLength = canvasSideLength = 150;
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
@@ -33,6 +34,17 @@ init()
 async function init() {
     await getChamps();
     champsAmount = champs.length;
+    
+    champs.forEach(champ => {
+        for (const key in alias) {
+            let newName = alias[key];
+            if (cleanString(newName) == cleanString(champ.name)) {
+                champ.name = key;
+            }
+        }
+        
+    })
+
     body.addEventListener("keyup", e => {
         if (e.key == "Enter") {
             guessBtn.click()
@@ -42,6 +54,63 @@ async function init() {
         img.classList.toggle(img.classList[0])
         random()
     })
+
+    let observer = new MutationObserver((mutationList, observer) => {
+        if (userInput.value == "") {
+            champList.classList.remove("show")
+            return
+        } 
+        champList.classList.add("show")
+        champList.innerHTML = ""
+
+        champs.forEach(champ => {
+            if (cleanString(champ.name).includes(userInput.value)) {
+                champList.insertAdjacentHTML("beforeend", 
+                `            
+                <div class="champ" id="${champ.name}">
+                    <img src="${champ.icon}" alt="">
+                    <span>${champ.name}</span>
+                </div>
+             `)
+            }
+        })
+
+        document.querySelectorAll(".champ").forEach(row => {
+            row.addEventListener("click", () => {
+                userInput.value = row.id
+                checkAnswer()
+            })
+        })
+
+    });
+
+    observer.observe(userInput, { attributes: true });
+
+    userInput.addEventListener("input", e => {
+        userInput.setAttribute("value", userInput.value)
+    })
+    // userInput.addEventListener("input", e => {
+    //     console.log(cleanString(userInput.value));
+    //     if (userInput.value == "") {
+    //         champList.classList.remove("show")
+    //         return
+    //     } 
+    //     champList.classList.add("show")
+    //     champList.innerHTML = ""
+
+    //     champs.forEach(champ => {
+    //         let name = champ.name
+    //         if (cleanString(name).includes(userInput.value)) {
+    //             champList.insertAdjacentHTML("beforeend", 
+    //             `            
+    //             <div class="champ" id="${champ.name}">
+    //                 <img src="${champ.icon}" alt="">
+    //                 <span>${name}</span>
+    //             </div>
+    //          `)
+    //         }
+    //     })
+    // })
     
     //no fking clue why I have to call it twice the first time
     setTimeout(() => {
@@ -60,7 +129,10 @@ async function getChamps() {
     let data = await response.json();
     let champsData = data.data
     for (const key in champsData) {
-        champs.push(key)
+        let obj = {}
+        obj.name = key
+        obj.icon = `https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${key}.png`
+        champs.push(obj)
     }
 }
 
@@ -89,12 +161,6 @@ function renderImg(champName, id) {
         offsetLeft = Math.ceil(Math.random() * (imgWidth - boxSideLength))  * -1
         ctx.drawImage(canvasImg, offsetLeft,  offsetTop, imgWidth, imgHeight);
     }
-}
-
-function changeCanvasWidth() {
-    canvas.width += 100;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(canvasImg, offsetLeft,  offsetTop, imgWidth, imgHeight);
 }
 
 function rescaleImg() {
@@ -131,28 +197,28 @@ async function random() {
     errorMsg.textContent = "";
 
     let chosenChamp = chooseRandomChamp();
-    champToGuess = chosenChamp;
-    let chosenSkin = await getSkin(chosenChamp);
-    renderImg(chosenChamp, chosenSkin);
+    let chosenChampName = chosenChamp.name
+    champToGuess = chosenChampName;
+    let chosenSkin = await getSkin(chosenChampName);
+    renderImg(chosenChampName, chosenSkin);
 }
 
 function checkAnswer() {
     let champToGuessLowerCase = champToGuess.toLowerCase();
-    let answerLowerCase = userInput.value.toLowerCase().replace(/[\.\'\s]]/i, "");
+    let answerLowerCase = cleanString(userInput.value);
     
     let isCorrect = (answerLowerCase == champToGuessLowerCase);
-    if (alias.hasOwnProperty(userInput.value)) {
-        answerLowerCase = alias[userInput.value]
-    }
     if (answerLowerCase != "" && champToGuess != "") {
         WinLoss(isCorrect);
         errorMsg.textContent = "";
-
     } else {
-        //TODO error message empty input
         error.textContent = errorMsg
     }
 
+}
+
+function cleanString(string) {
+    return string.toLowerCase().replace(/[\s'\.]/gi, "")
 }
 
 function WinLoss(isCorrect) {
@@ -180,3 +246,5 @@ function changeBoxShadow(color) {
     },1000)
     
 }
+
+

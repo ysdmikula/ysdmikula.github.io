@@ -34,6 +34,7 @@ body.defeat::after {
 
 #guess {
     font-size: 1.5em;
+    flex-grow: 1;
 }
 
 canvas {
@@ -49,10 +50,6 @@ canvas {
 div:has(> input) {
     display: flex;
     gap: 10px;
-}
-
-div *:first-child {
-    flex-grow: 1;
 }
 
 #splashArt {
@@ -84,6 +81,10 @@ p {
     color: red;
 }
 
+#form {
+  position: relative;
+}
+
 button {
     width: fit-content;
     padding: 10px;
@@ -96,8 +97,10 @@ button {
     font-weight: bold;
 }
 
+
+
 /* CSS */
-.button-85, #guess {
+.button-85, #guess, #champList {
   padding: 0.6em 2em;
   border: none;
   outline: none;
@@ -109,6 +112,43 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+#champList {
+  position: absolute;
+  box-sizing: border-box;
+  width: 388px;
+  height: 300px;
+  top: 57px;
+  display: flex;
+  flex-direction: column;
+  z-index: 500;
+  overflow: auto;
+  gap: 10px;
+  display: none;
+}
+
+#champList.show {
+  display: flex;
+}
+
+.champ {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  &:hover {
+    background-color: #3a3a3a;
+  }
+}
+
+.champ img {
+  width: 50px;
+}
+
+.champ span {
+  text-transform: capitalize;
 }
 
 .button-85 {
