@@ -38,10 +38,12 @@ body.defeat::after {
 
 canvas {
     --size: 300px;
+    --clr: black;
     width: var(--size);
     height: var(--size);
     overflow: hidden;
-    box-shadow: 0 0 100px 10px black;
+    box-shadow: 0 0 100px 10px var(--clr);
+    transition: box-shadow 100ms ease-in-out;
 }
 
 div:has(> input) {

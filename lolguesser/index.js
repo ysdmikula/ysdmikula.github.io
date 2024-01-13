@@ -159,7 +159,9 @@ function WinLoss(isCorrect) {
     if (isCorrect) {
         showFullImg()
         userInput.value = "";
+        changeBoxShadow("green")
     } else {
+        changeBoxShadow("red")
         rescaleImg()
     }
 
@@ -169,4 +171,12 @@ function showFullImg() {
     if (!img.classList.contains("show")) {
         img.classList.toggle("show")
     }
+}
+
+function changeBoxShadow(color) {
+    canvas.style.setProperty("--clr", color);
+    setTimeout(e => {
+        canvas.style.setProperty("--clr", "black");
+    },1000)
+    
 }
