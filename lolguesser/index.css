@@ -38,7 +38,7 @@ body.defeat::after {
 }
 
 canvas {
-    --size: 300px;
+    --size: 500px;
     --clr: black;
     width: var(--size);
     height: var(--size);
