@@ -29,10 +29,16 @@ let imgWidth;
 let offsetTop;
 let offsetLeft;
 
+const logo = document.querySelector("#trademark");
+const lolguesser = document.querySelector("#lolguesser");
+const randomPick = document.querySelector("#randomPick");
+
 init()
 
 async function init() {
     await getChamps();
+    console.log(champs);
+
     champsAmount = champs.length;
     
     champs.forEach(champ => {
@@ -124,10 +130,17 @@ async function init() {
 
 }
 
+logo.addEventListener("click", e => {
+    lolguesser.classList.toggle("displayNone");
+    randomPick.classList.toggle("displayNone");
+})
+
+
 async function getChamps() {
     let response = await fetch("https://ddragon.leagueoflegends.com/cdn/14.1.1/data/en_US/champion.json", requestHeader);
     let data = await response.json();
     let champsData = data.data
+    console.log(champsData);
     for (const key in champsData) {
         let obj = {}
         obj.name = key

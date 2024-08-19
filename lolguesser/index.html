@@ -18,19 +18,25 @@
          style="width: 50px; height: 50px; position: absolute; top: 0; left: 0"
       />
 
-      <img id="splashArt" src="" alt="" />
+      <div id="lolguesser">
+         <img id="splashArt" src="" alt="" />
 
-      <canvas width="150" height="150"></canvas>
-
-      <div>
-         <div id="form">
-            <input type="text" name="guess" id="guess" />
-            <div id="champList"></div>
-            <button type="submit" onclick="checkAnswer()" id="guessBtn" class="button-85" role="button">Guess</button>
+         <canvas width="150" height="150"></canvas>
+   
+         <div>
+            <div id="form">
+               <input type="text" name="guess" id="guess" />
+               <div id="champList"></div>
+               <button type="submit" onclick="checkAnswer()" id="guessBtn" class="button-85" role="button">Guess</button>
+            </div>
+            <p id="error"></p>
          </div>
-         <p id="error"></p>
+   
+         <button id="random" onclick="random()" class="button-85" role="button">Random</button>
       </div>
-
-      <button id="random" onclick="random()" class="button-85" role="button">Random</button>
+      <div id="randomPick" class="displayNone">
+         <div></div>
+         <div></div>
+      </div>
    </body>
 </html>

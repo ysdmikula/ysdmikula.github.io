@@ -7,12 +7,16 @@
 }
 
 body {
+  background-color: #3a3a3a;
+  margin: 0;
+}
+
+#lolguesser {
     height: 100vh;
     display: grid;
     align-items: center;
     justify-content: center;
     background-color: #3a3a3a;
-    margin: 0;
 }
 
 body.victory::before {
@@ -96,6 +100,10 @@ button {
     padding: 2em 2em;
     font-size: 1.3em;
     font-weight: bold;
+}
+
+.displayNone {
+  display: none !important;
 }
 
 
@@ -216,3 +224,4 @@ button {
 #random, canvas {
     justify-self: center;
 }
+
