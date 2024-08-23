@@ -47,7 +47,19 @@ main {
 }
   
 .select-selected {
+    position: relative;
     background-color: rgb(0, 45, 128);
+}
+
+.error p {
+    width: 350px;
+    display: none;
+}
+.error p.show {
+    display: block;
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 /*style the arrow inside the select element:*/

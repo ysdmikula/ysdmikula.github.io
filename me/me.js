@@ -1,5 +1,4 @@
-import { setCookie, getCookie, init, LANG } from "./text.js";
-await init();
+import { setCookie, getCookie, init as textInit, LANG } from "./text.js";
 let nav = document.querySelector(".custom-select");
 let selElmnt = document.querySelector("select");
 let lang = getCookie("lang");
@@ -101,11 +100,9 @@ async function getProjects() {
       );
    }
 }
-
 getProjects();
 
 const imgContainer = document.querySelector("#imgContainer");
-
 document.querySelector("#links a:last-child").addEventListener("animationend", (e) => {
    if (e.animationName == "linkSlideLeft" || e.animationName == "linkSlideRight") {
       imgContainer.classList.remove("js-showLinks");
@@ -243,6 +240,8 @@ progressBars.forEach((progressBar) => {
    let fillProgressBar = progressBar.getAttribute("data-percent");
    progressBar.style.setProperty("--js-progressBarFill", fillProgressBar + "%");
 });
+
+await textInit();
 
 //animate in JS not using classes
 // progressBars.forEach((progressBar, index) => {
