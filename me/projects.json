@@ -1,5 +1,5 @@
 [
-{"index": [
+{"cs": [
     {
         "name": "Seznam Mapy API",
         "url": "https://ysdmikula.github.io/mapa/",
@@ -30,7 +30,7 @@
     }
  ]
 },
-{"eng": [
+{"en": [
     {
         "name": "Seznam Mapy API",
         "url": "https://ysdmikula.github.io/mapa/",
