@@ -193,23 +193,18 @@ main {
 }
 
 #PCskills .skillType {
-    --typeMargin: 30px; 
     position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, 160px);
-    margin: var(--typeMargin) 0;
+    margin: 60px 0;
 
     &::before {
         content: attr(data-skillType);
         position: absolute;
         width: 100%;
         border-bottom: #fff solid 2px;
-        top: calc(var(--typeMargin) * -1);
+        top: -30px;
     }
-}
-
-.skillType::before {
-    content: "hi";
 }
 
 :is(.personalDetails, .skillsContainer)::before {

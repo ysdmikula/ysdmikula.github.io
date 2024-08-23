@@ -1,173 +1,206 @@
 #loader {
-    --height:  100;
-    position: absolute;
-    width: 100%;
-    height: 100%; 
-    z-index: 100;
-    left: 0;
-    top: 0;
-    background-color: rgb(0, 0, 0);
-    opacity: 1;
-    transition: opacity 1s;
-    pointer-events: none;
+   --height: 100;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   z-index: 100;
+   left: 0;
+   top: 0;
+   background-color: rgb(0, 0, 0);
+   opacity: 1;
+   transition: opacity 1s;
+   pointer-events: none;
 }
 
 #loader::after {
-    content: "";
-    width: 100%;
-    height: var(--height);
-    background-color: rgb(0, 0, 0);
-    position: absolute;
-    z-index: 1;
-    mix-blend-mode: color;
-    left: 0;
+   content: "";
+   width: 100%;
+   height: var(--height);
+   background-color: rgb(0, 0, 0);
+   position: absolute;
+   z-index: 1;
+   mix-blend-mode: color;
+   left: 0;
 }
 
-#loader img{
-    position: absolute;
-    max-width: 100%;
-    max-height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%)
-               translateY(-50%);
+#loader img {
+   position: absolute;
+   max-width: 100%;
+   max-height: 100%;
+   top: 50%;
+   left: 50%;
+   transform: translateX(-50%) translateY(-50%);
 }
 
 #circleLoader {
-    position: absolute;
-    z-index: 15;
-    border: 14px solid #000000; 
-    border-top: 14px solid #1100ff; 
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    right: 10px;
-    bottom: 10px;
-    animation: spin 2s linear infinite;
+   position: absolute;
+   z-index: 15;
+   border: 14px solid #000000;
+   border-top: 14px solid #1100ff;
+   border-radius: 50%;
+   width: 50px;
+   height: 50px;
+   right: 10px;
+   bottom: 10px;
+   animation: spin 2s linear infinite;
 }
-  
+
 body {
-    overflow-x: hidden;
-    overflow-y: hidden;
+   overflow-x: hidden;
+   overflow-y: hidden;
 }
 
 * {
-    font-family: "Audiowide", sans-serif;
-    color: rgb(255, 255, 255);
+   font-family: "Audiowide", sans-serif;
+   color: rgb(255, 255, 255);
 }
 
-*:not(a *, a, h1,h2,h3, .select-selected) {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.03em;
+*:not(a *, a, h1, h2, h3, .select-selected) {
+   font-family: "Times New Roman", Times, serif;
+   font-size: 1.03em;
 }
 
 #animationBg {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    overflow: hidden;
-    gap: 2px;
-    position: relative;
-    
+   margin: 0;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   flex-wrap: wrap;
+   align-content: flex-start;
+   overflow: hidden;
+   gap: 2px;
+   position: relative;
 }
 
 #animationBg #moving {
-    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,255,1) 20%, rgba(0,0,255,1) 80%, rgba(0,0,0,1) 100%);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    animation: movingBg 13s linear infinite;
+   background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 255, 1) 20%,
+      rgba(0, 0, 255, 1) 80%,
+      rgba(0, 0, 0, 1) 100%
+   );
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   z-index: -2;
+   animation: movingBg 13s linear infinite;
 }
 
 #animationBg::before {
-    content: '';
-    background-color: #000000;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -3;
+   content: "";
+   background-color: #000000;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   z-index: -3;
 }
 
 .pixel {
-    box-sizing: border-box;
-    transition: background-color 1.5s;
-    background-color: #000000;
+   box-sizing: border-box;
+   transition: background-color 1.5s;
+   background-color: #000000;
 }
 
 .pixel:hover {
-    background-color: rgb(0, 0, 255);
-    transition: background-color 0s;
+   background-color: rgb(0, 0, 255);
+   transition: background-color 0s;
 }
 
-#text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50% 0 ;
-    pointer-events: none;
-    text-align: center;
+#text {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   translate: -50% -50% 0;
+   pointer-events: none;
+   text-align: center;
 
-    & h4 {
-        animation: scrollDown 1s infinite;
-    }
+   & h4 {
+      animation: scrollDown 1s infinite;
+   }
 }
 
-#text h1{
-    white-space: nowrap;
-    font-weight: bold;  
-    font-size: 8vw;
-    margin: 0;
+#text h1 {
+   white-space: nowrap;
+   font-weight: bold;
+   font-size: 8vw;
+   margin: 0;
 }
 
-#text h2{
-    font-size: 3vw;
-    pointer-events: all;
-    opacity: 0;
-    
-    &:hover{
-        opacity: 1;
-    }
+#text h2 {
+   font-size: 3vw;
+   pointer-events: all;
+   opacity: 0;
+
+   &:hover {
+      opacity: 1;
+   }
 }
 
-#text h3{
-    color: #fff;
-    border-right: 2px solid rgb(255, 255, 255); 
-    height: 25px;
-    margin: 100px auto 0 auto;
-    padding-right: 5px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    animation: blink-caret .5s step-end infinite;
-    width: min-content;
-    white-space: nowrap;
+#text h3 {
+   color: #fff;
+   border-right: 2px solid rgb(255, 255, 255);
+   height: 25px;
+   margin: 100px auto 0 auto;
+   padding-right: 5px;
+   letter-spacing: 0.15em;
+   text-transform: uppercase;
+   animation: blink-caret 0.5s step-end infinite;
+   width: min-content;
+   white-space: nowrap;
 }
 
+.name path:nth-child(1) {
+   stroke-width: 5px;
+   stroke: rgb(233, 233, 233);
+   animation: text 5s linear forwards;
+}
+
+@keyframes text {
+   0% {
+      stroke-dasharray: 10;
+      fill: #1100ff00;
+   }
+   100% {
+      stroke-dasharray: 589 0;
+      fill: #1100ff;
+   }
+}
 
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: rgb(255, 255, 255) }
-  }
+   from,
+   to {
+      border-color: transparent;
+   }
+   50% {
+      border-color: rgb(255, 255, 255);
+   }
+}
 
 @keyframes movingBg {
-    0%{
-        transform: translateY(-100%);
-    }
-    100%{
-        transform: translateY(100%);
-    }
+   0% {
+      transform: translateY(-100%);
+   }
+   100% {
+      transform: translateY(100%);
+   }
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
 }
 @keyframes scrollDown {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(20px); }
+   0% {
+      transform: translateY(0px);
+   }
+   100% {
+      transform: translateY(20px);
+   }
 }
 
 /* nav {
@@ -253,7 +286,6 @@ nav:not(.js-hide) + #menuBtn .bar2 {
 nav:not(.js-hide) + #menuBtn .bar3 {
     transform: translate(0, -6px) rotate(45deg);
 } */
-
 
 /*
 @keyframes navLinksShow {
