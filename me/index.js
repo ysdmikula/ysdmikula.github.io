@@ -18,6 +18,7 @@ window.onload = (event) => {
         document.querySelector("body").style.overflowY = "auto";
     });
     createPixels();
+    document.querySelector('svg.name').classList.add('animate')
 }
 
 window.onresize = (e) => {

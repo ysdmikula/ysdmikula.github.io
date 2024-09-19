@@ -156,6 +156,11 @@ body {
    animation: text 5s linear forwards;
 }
 
+.name.animate path:nth-child(1) {
+   animation: text 5s linear forwards;
+}
+
+
 @keyframes text {
    0% {
       stroke-dasharray: 10;
