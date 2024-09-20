@@ -37,7 +37,6 @@ init()
 
 async function init() {
     await getChamps();
-    console.log(champs);
 
     champsAmount = champs.length;
     
@@ -70,7 +69,7 @@ async function init() {
         champList.innerHTML = ""
 
         champs.forEach(champ => {
-            if (cleanString(champ.name).includes(userInput.value)) {
+            if (cleanString(champ.name).includes(cleanString(userInput.value))) {
                 champList.insertAdjacentHTML("beforeend", 
                 `            
                 <div class="champ" id="${champ.name}">
@@ -140,7 +139,6 @@ async function getChamps() {
     let response = await fetch("https://ddragon.leagueoflegends.com/cdn/14.1.1/data/en_US/champion.json", requestHeader);
     let data = await response.json();
     let champsData = data.data
-    console.log(champsData);
     for (const key in champsData) {
         let obj = {}
         obj.name = key
