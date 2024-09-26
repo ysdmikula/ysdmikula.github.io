@@ -18,6 +18,7 @@ const body = document.querySelector("body");
 const userInput = document.querySelector("#guess");
 const guessBtn = document.querySelector("#guessBtn");
 const error = document.querySelector("#error");
+const loader = document.querySelector("#loader");
 const errorMsg = "Enter a guess";
 const alias = {
    wukong: "monkey king",
@@ -163,6 +164,9 @@ async function getSkin(name) {
 
 
 function renderImg(champName, id) {
+   loader.classList.remove("load")
+   let link = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + champName + "_" + id + ".jpg"
+   img.src = link
    canvasImg.onload = () => {
       imgHeight = canvasImg.height;
       imgWidth = canvasImg.width;
@@ -172,7 +176,7 @@ function renderImg(champName, id) {
       offsetLeft = Math.ceil(Math.random() * (imgWidth - boxSideLength)) * -1;
       ctx.drawImage(canvasImg, offsetLeft, offsetTop, imgWidth, imgHeight);
    };
-   canvasImg.src = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + champName + "_" + id + ".jpg";
+   canvasImg.src = link;
 }
 
 function rescaleImg() {
@@ -204,6 +208,7 @@ function chooseRandomChamp() {
 }
 
 async function random() {
+   loader.classList.add("load")
    canvas.width = canvasSideLength;
    canvas.height = canvasSideLength;
    errorMsg.textContent = "";
