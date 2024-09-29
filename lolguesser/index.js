@@ -65,38 +65,39 @@ async function init() {
       random();
    });
 
-   let observer = new MutationObserver((mutationList, observer) => {
-      if (userInput.value == "") {
-         champList.classList.remove("show");
-         return;
-      }
-      champList.classList.add("show");
-      champList.innerHTML = "";
-      champs.forEach((champ) => {
-         if (cleanString(champ.name).includes(cleanString(userInput.value))) {
-            champList.insertAdjacentHTML(
-               "beforeend",
-               `       
-                <div class="champ" id="${champ.name}" tabindex="0">
-                    <img src="${champ.icon}" alt="${champ.name}">
-                    <span>${champ.name}</span>
-                </div>`
-            );
-         }
-      });
+   // let observer = new MutationObserver((mutationList, observer) => {
+   //    if (userInput.value == "") {
+   //       champList.classList.remove("show");
+   //       return;
+   //    }
+   //    champList.classList.add("show");
+   //    champList.innerHTML = "";
+   //    champs.forEach((champ) => {
+   //       if (cleanString(champ.name).includes(cleanString(userInput.value))) {
+   //          champList.insertAdjacentHTML(
+   //             "beforeend",
+   //             `       
+   //         <div class="champ" id="${champ.name}" tabindex="0">
+   //             <img src="${champ.icon}" alt="${champ.name}">
+   //             <span>${champ.name}</span>
+   //         </div>`
+   //          );
+   //       }
+   //    });
+   //    if (document.querySelectorAll(".champ").length <= 0) {
+   //       champList.classList.remove("show");
+   //       return;
+   //    }
+   //    document.querySelectorAll(".champ").forEach((row) => {
+   //       row.addEventListener("click", () => {
+   //          userInput.value = row.id;
+   //          checkAnswer();
+   //       });
+   //    });
+   // });
+   // observer.observe(userInput, { attributes: true });
 
-      document.querySelectorAll(".champ").forEach((row) => {
-         row.addEventListener("click", () => {
-            userInput.value = row.id;
-            checkAnswer();
-            userInput.focus();
-         });
-      });
-   });
-
-   //    observer.observe(userInput, { attributes: true });
    userInput.addEventListener("input", (e) => {
-      userInput.setAttribute("value", userInput.value);
       if (userInput.value == "") {
          champList.classList.remove("show");
          return;
@@ -115,7 +116,10 @@ async function init() {
             );
          }
       });
-
+      if (document.querySelectorAll(".champ").length <= 0) {
+         champList.classList.remove("show");
+         return;
+      }
       document.querySelectorAll(".champ").forEach((row) => {
          row.addEventListener("click", () => {
             userInput.value = row.id;
@@ -124,9 +128,7 @@ async function init() {
       });
    });
 
-   setTimeout(() => {
-      random();
-   }, 1000);
+   random();
 }
 
 logo.addEventListener("click", (e) => {
