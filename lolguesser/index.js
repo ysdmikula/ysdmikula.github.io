@@ -65,44 +65,16 @@ async function init() {
       random();
    });
 
-   // let observer = new MutationObserver((mutationList, observer) => {
-   //    if (userInput.value == "") {
-   //       champList.classList.remove("show");
-   //       return;
-   //    }
-   //    champList.classList.add("show");
-   //    champList.innerHTML = "";
-   //    champs.forEach((champ) => {
-   //       if (cleanString(champ.name).includes(cleanString(userInput.value))) {
-   //          champList.insertAdjacentHTML(
-   //             "beforeend",
-   //             `       
-   //         <div class="champ" id="${champ.name}" tabindex="0">
-   //             <img src="${champ.icon}" alt="${champ.name}">
-   //             <span>${champ.name}</span>
-   //         </div>`
-   //          );
-   //       }
-   //    });
-   //    if (document.querySelectorAll(".champ").length <= 0) {
-   //       champList.classList.remove("show");
-   //       return;
-   //    }
-   //    document.querySelectorAll(".champ").forEach((row) => {
-   //       row.addEventListener("click", () => {
-   //          userInput.value = row.id;
-   //          checkAnswer();
-   //       });
-   //    });
-   // });
-   // observer.observe(userInput, { attributes: true });
-
    userInput.addEventListener("input", (e) => {
       if (userInput.value == "") {
          champList.classList.remove("show");
          return;
       }
       champList.classList.add("show");
+      let yPos = champList.getBoundingClientRect().top
+      
+      champList.style.height = window.innerHeight - yPos - 10 + "px"
+      
       champList.innerHTML = "";
       champs.forEach((champ) => {
          if (cleanString(champ.name).includes(cleanString(userInput.value))) {
@@ -229,10 +201,12 @@ function checkAnswer() {
    let isCorrect = answerLowerCase == champToGuessLowerCase;
    if (answerLowerCase != "" && champToGuess != "") {
       WinLoss(isCorrect);
-      errorMsg.textContent = "";
+      error.textContent = "";
    } else {
       error.textContent = errorMsg;
    }
+   userInput.value = "";
+   userInput.dispatchEvent(new Event("input"))
 }
 
 function cleanString(string) {
