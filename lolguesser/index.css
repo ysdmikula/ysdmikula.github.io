@@ -1,3 +1,7 @@
+html {
+  color: white;
+}
+
 #trademark {
     width: 20px;
     height: 20px;
@@ -43,12 +47,11 @@ body.defeat::after {
 }
 
 canvas {
-    --size: 500px;
-    --clr: black;
-    width: var(--size);
-    height: var(--size);
+    max-width: 500px;
+    width: 100%;
+    aspect-ratio: 1/1;
     overflow: hidden;
-    box-shadow: 0 0 100px 10px var(--clr);
+    box-shadow: 0 0 100px 10px black;
     transition: box-shadow 100ms ease-in-out;
 }
 
@@ -67,6 +70,7 @@ div:has(> input) {
       left: 50%;
       translate: -50% -50%;
       z-index: 1000000;
+      width: 95%;
     }
 }
 
@@ -82,7 +86,7 @@ div:has(> input) {
   }
 }
 
-p {
+#error {
     color: red;
 }
 
@@ -126,7 +130,7 @@ button {
 #champList {
   position: absolute;
   box-sizing: border-box;
-  width: 398px;
+  width: 388px;
   height: 250px;
   top: 57px;
   display: flex;
@@ -221,7 +225,7 @@ button {
   border-radius: 10px;
 }
 
-#random, canvas {
+#random, canvas, div:has(> #streakCount) {
     justify-self: center;
 }
 
@@ -262,3 +266,38 @@ button {
   }
 }
 
+@media screen and (max-width: 600px) {
+  #lolguesser {
+    justify-items: center;
+  }
+
+  .canvasContainer {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+  }
+
+  div:has(> input) {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 20px;
+  }
+
+  #guess {
+    box-sizing: border-box;
+    width: 95%;
+  }
+
+  #guessBtn {
+    height: 50px;
+  }
+
+  #random {
+    font-size: medium;
+  }
+  
+  #champList {
+    top: 126px;
+    width: 95%;
+  }
+}

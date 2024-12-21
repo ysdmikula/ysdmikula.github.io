@@ -19,6 +19,7 @@ const userInput = document.querySelector("#guess");
 const guessBtn = document.querySelector("#guessBtn");
 const error = document.querySelector("#error");
 const loader = document.querySelector("#loader");
+const streakCount = document.querySelector("#streakCount");
 const errorMsg = "Enter a guess";
 const alias = {
    wukong: "monkey king",
@@ -39,6 +40,12 @@ init();
 
 async function init() {
    await getChamps();
+
+   if (localStorage.getItem("streak")) {
+      streakCount.textContent = localStorage.getItem("streak");
+   } else {
+      streakCount.textContent = 0;
+   }
 
    champsAmount = champs.length;
 
@@ -170,13 +177,6 @@ function rescaleImg() {
    ctx.drawImage(canvasImg, offsetLeft, offsetTop, imgWidth, imgHeight);
 }
 
-//LOOKUP reading a blob?
-// async function getSkin(name, id) {
-//     let response = await fetch("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + name + "_" + id + ".jpg", requestHeader);
-//     let data = await response.blob();
-//     console.log(data)
-// }
-
 function chooseRandomChamp() {
    return champs[Math.floor(Math.random() * champs.length)];
 }
@@ -219,10 +219,13 @@ function WinLoss(isCorrect) {
       showFullImg();
       userInput.value = "";
       changeBoxShadow("green");
+      localStorage.setItem("streak", parseInt(localStorage.getItem("streak") ?? 0) + 1);
    } else {
       changeBoxShadow("red");
       rescaleImg();
+      localStorage.setItem("streak", 0);
    }
+   streakCount.textContent = localStorage.getItem("streak");
 }
 
 function showFullImg() {
@@ -237,3 +240,9 @@ function changeBoxShadow(color) {
       canvas.style.setProperty("--clr", "black");
    }, 1000);
 }
+
+window.addEventListener("click", (event) => {
+   if (champList != event.target) {
+      champList.classList.remove("show");
+   }
+});
