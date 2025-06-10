@@ -388,6 +388,7 @@ nav a.js-active div, nav a.js-active{
 
 .skill img {
     height: 100px;
+    max-width: 100%;
 }
 
 .skill img[alt~="sql"]{
