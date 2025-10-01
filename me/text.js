@@ -1,7 +1,9 @@
-export const LANG = getCookie('lang');
+export let LANG = getCookie('lang');
+console.log("Current lang:", LANG);
 const SUPPORTED_LANG = ['cs', 'en', 'de']
 if (!LANG || !SUPPORTED_LANG.includes(LANG)) {
     setCookie('lang', 'cs', 365);
+    LANG = 'cs';
 }
 let texts;
 
@@ -51,6 +53,8 @@ export async function init() {
 };
 async function getText() {
     const response = await fetch("text.json");
+    console.log(response);
+    
     if (!response.ok) {
         throw new Error("Multilingual text not loaded!");
     }

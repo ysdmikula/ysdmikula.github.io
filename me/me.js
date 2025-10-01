@@ -71,6 +71,7 @@ const projectsSection = document.querySelector("#projects");
 async function getProjects() {
    try {
       const response = await fetch("projects.json");
+      console.log(response);
       if (!response.ok) {
          throw new Error(`Failed to get projects! status: ${response.status}`);
       }
