@@ -72,12 +72,11 @@ menuButtons.forEach((button) => {
       const targetSection = document.querySelector("#" + targetId);
 
       if (targetSection && menusContainer) {
-         const containerTop = menusContainer.scrollTop;
          const sectionTop = targetSection.offsetTop - menusContainer.offsetTop;
 
          menusContainer.scrollTo({
             top: sectionTop,
-            behavior: "smooth",
+            behavior: "instant",
          });
       }
    });
