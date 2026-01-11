@@ -1,8 +1,4 @@
 M.AutoInit();
-// document.addEventListener("DOMContentLoaded", function () {
-//    var elems = document.querySelectorAll(".materialboxed");
-//    var instances = M.Materialbox.init(elems, options);
-// });
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
    anchor.addEventListener("click", function (e) {
@@ -17,7 +13,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
    });
 });
 
-// Mobile menu toggle
 const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
 const nav = document.querySelector("nav");
 
@@ -43,3 +38,77 @@ window.addEventListener("resize", (e) => {
       nav.style = "";
    }
 });
+
+const menuButtons = document.querySelectorAll(".menu-card[data-category]");
+const menusContainer = document.querySelector(".menus-container");
+const menuSections = document.querySelectorAll(".menu-category");
+
+const menuGrid = document.querySelector(".menu-grid");
+function scrollButtonIntoView(button) {
+   if (menuGrid && button) {
+      const buttonLeft = button.offsetLeft;
+      const buttonWidth = button.offsetWidth;
+      const gridScrollLeft = menuGrid.scrollLeft;
+      const gridWidth = menuGrid.offsetWidth;
+
+      if (buttonLeft < gridScrollLeft) {
+         menuGrid.scrollTo({
+            left: buttonLeft - 50,
+            behavior: "smooth",
+         });
+      } else if (buttonLeft + buttonWidth > gridScrollLeft + gridWidth) {
+         menuGrid.scrollTo({
+            left: buttonLeft + buttonWidth - gridWidth + 20,
+            behavior: "smooth",
+         });
+      }
+   }
+}
+
+menuButtons.forEach((button) => {
+   button.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = button.getAttribute("data-category");
+      const targetSection = document.querySelector("#" + targetId);
+
+      if (targetSection && menusContainer) {
+         const containerTop = menusContainer.scrollTop;
+         const sectionTop = targetSection.offsetTop - menusContainer.offsetTop;
+
+         menusContainer.scrollTo({
+            top: sectionTop,
+            behavior: "smooth",
+         });
+      }
+   });
+});
+
+if (menusContainer) {
+   menusContainer.addEventListener("scroll", () => {
+      const scrollPosition = menusContainer.scrollTop + 100;
+
+      let currentSection = "";
+
+      menuSections.forEach((section) => {
+         const sectionTop = section.offsetTop - menusContainer.offsetTop;
+         const sectionHeight = section.offsetHeight;
+
+         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSection = section.id;
+         }
+      });
+
+      menuButtons.forEach((button) => {
+         const wasActive = button.classList.contains("active");
+         button.classList.remove("active");
+         const targetId = button.getAttribute("data-category");
+
+         if (targetId === currentSection) {
+            button.classList.add("active");
+            if (!wasActive) {
+               scrollButtonIntoView(button);
+            }
+         }
+      });
+   });
+}

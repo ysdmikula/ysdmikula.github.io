@@ -89,11 +89,6 @@ nav a:hover {
    color: #fff;
 }
 
-.logo-container {
-   display: flex;
-   align-items: center;
-}
-
 .header-logo {
    height: 50px;
    width: auto;
@@ -109,6 +104,7 @@ nav a:hover {
 .hero-logo {
    max-width: 180px;
    margin: 0 auto 2rem;
+   mix-blend-mode: lighten;
 }
 
 .hero h1 {
@@ -204,6 +200,9 @@ section {
 }
 
 .menu-section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
    padding: 2rem 2rem;
 }
 
@@ -216,44 +215,17 @@ section {
 }
 
 .menu-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-   gap: 2.5rem;
-   max-width: 1000px;
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: flex-start;
+   gap: 1rem;
+   max-width: 100%;
    margin: 0 auto;
-}
-
-.menu-card {
-   background: #fff;
-   padding: 2.5rem;
-   border-radius: 12px;
-   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-   text-align: center;
-   transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.menu-card:hover {
-   transform: translateY(-8px);
-   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-}
-
-.menu-icon {
-   font-size: 3.5rem;
-   margin-bottom: 1.5rem;
-   color: #4169e1;
-}
-
-.menu-card h3 {
-   font-size: 1.6rem;
-   margin-bottom: 1rem;
-   color: #1a1a2e;
-   font-weight: 600;
-}
-
-.menu-card p {
-   color: #666;
-   margin-bottom: 1.8rem;
-   line-height: 1.6;
+   overflow-x: auto;
+   overflow-y: visible;
+   padding: 2rem 1rem;
+   scroll-behavior: smooth;
+   -webkit-overflow-scrolling: touch;
 }
 
 .menu-btn {
@@ -572,4 +544,215 @@ footer {
    background-color: #292929;
    z-index: 1000;
    will-change: opacity;
+}
+
+img.materialboxed:not(.active) {
+   width: 100%;
+   margin: 10px 0;
+}
+
+.menus-container {
+   overflow: auto;
+   height: 800px;
+   max-width: 700px;
+   width: 100%;
+}
+
+
+
+.menu-grid::-webkit-scrollbar {
+   height: 8px;
+}
+
+.menu-grid::-webkit-scrollbar-track {
+   background: #f1f1f1;
+   border-radius: 10px;
+}
+
+.menu-grid::-webkit-scrollbar-thumb {
+   background: #ccc;
+   border-radius: 10px;
+}
+
+.menu-grid::-webkit-scrollbar-thumb:hover {
+   background: #999;
+}
+
+.menu-card {
+   display: inline-flex;
+   align-items: center;
+   background: white;
+   padding: 5px 15px;
+   border-radius: 30px;
+   border: 2px solid #e0e0e0;
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+   text-decoration: none;
+   transition: all 0.3s ease;
+   color: #1a1a2e;
+   font-weight: 500;
+   font-size: 1.1rem;
+   position: relative;
+   overflow: hidden;
+   flex-shrink: 0;
+   white-space: nowrap;
+}
+
+.menu-card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+   border-color: #4169e1;
+}
+
+.menu-icon {
+   font-size: 1.8rem;
+   margin: 0;
+   position: relative;
+   z-index: 1;
+   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+.menu-card h3 {
+   font-size: 1rem;
+   margin: 0;
+   color: #1a1a2e;
+   font-weight: 600;
+   position: relative;
+   z-index: 1;
+}
+
+.menu-card.drinks {
+   border: 2px solid #4169e1;
+   position: relative;
+   overflow: hidden;
+}
+.menu-card.drinks svg {
+   width: 230px;
+   position: absolute;
+   left: -40px;
+   bottom: -1px;
+}
+
+.menu-card.drinks:hover,
+.menu-card.drinks.active {
+   border-color: #2952cc;
+   box-shadow: 0 0px 30px rgba(0, 26, 255, 0.3);
+}
+
+.menu-card.sushi {
+   border: 2px solid #ff6b6b;
+   background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 122, 122, 1) 80%,
+      rgba(255, 0, 0, 1) 100%
+   );
+}
+
+.menu-card.sushi:hover,
+.menu-card.sushi.active {
+   border-color: #ff5252;
+   box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+}
+
+.menu-card.soups {
+   border: 2px solid #ffa726;
+}
+
+.menu-card.soups:hover,
+.menu-card.soups.active {
+   border-color: #ff9800;
+   box-shadow: 0 0px 30px rgba(255, 167, 38, 0.3);
+}
+
+.menu-card.salads {
+   border-color: #66bb6a;
+   background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+}
+
+.menu-card.salads::before,
+.menu-card.salads::after {
+   background: transparent;
+   opacity: 0.6;
+   z-index: 0;
+   position: absolute;
+}
+
+.menu-card.salads::before {
+   content: "🍃";
+   top: 40%;
+   right: 30%;
+   font-size: 1.2rem;
+   animation: leafFloat 4s ease-in-out infinite;
+}
+
+.menu-card.salads::after {
+   content: "🍃";
+   bottom: 25%;
+   right: 15%;
+   font-size: 0.9rem;
+   animation: leafFloat 4s ease-in-out infinite 1s;
+}
+
+@keyframes leafFloat {
+   0%,
+   100% {
+      transform: translateY(0) rotate(0deg);
+   }
+   25% {
+      transform: translateY(-10px) rotate(5deg);
+   }
+   75% {
+      transform: translateY(-5px) rotate(-5deg);
+   }
+}
+
+.menu-card.salads:hover,
+.menu-card.salads.active {
+   border-color: #4caf50;
+   box-shadow: 0 0px 30px rgba(102, 187, 106, 0.3);
+}
+
+.menu-card.main-dishes {
+   border: 2px solid #26c6da;
+}
+
+.menu-card.main-dishes:hover,
+.menu-card.main-dishes.active {
+   border-color: #00bcd4;
+   box-shadow: 0 0px 30px rgba(38, 198, 218, 0.3);
+}
+
+.menu-card.main-dishes::before,
+.menu-card.main-dishes::after {
+   background: transparent;
+   position: absolute;
+   z-index: 0;
+}
+
+.menu-card.main-dishes::before {
+   content: "✨";
+   top: 10%;
+   left: -10%;
+   font-size: 3rem;
+   animation: sparkle 2s ease-in-out infinite;
+}
+
+.menu-card.main-dishes::after {
+   content: "✨";
+   bottom: 15%;
+   right: 10%;
+   font-size: 2rem;
+   animation: sparkle 2s ease-in-out infinite 0.7s;
+}
+
+@keyframes sparkle {
+   0%,
+   100% {
+      opacity: 0;
+      transform: scale(0) rotate(0deg);
+   }
+   50% {
+      opacity: 1;
+      transform: scale(1) rotate(180deg);
+   }
 }
